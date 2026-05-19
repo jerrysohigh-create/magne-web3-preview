@@ -382,7 +382,53 @@ const result = await facilitator.strictVerify({
         </div>
       </div>
     </section>
+
+    <!-- Agent Pay Quickstart -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>MAGNE Agent Pay Quickstart</h2>
+        </div>
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <p>x402-Compatible Agent Payment — 5 steps from task request to on-chain receipt. Testnet-stage developer demo.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+          <div class="card">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">01</div>
+            <h3>Return HTTP 402</h3>
+            <p style="font-size: 0.9rem;">When agent calls your API without payment, return <code style="font-family: 'JetBrains Mono', monospace; color: #39d0d6; font-size: 0.8rem;">402 Payment Required</code> with: amount, token, recipient, chainId.</p>
+          </div>
+          <div class="card">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">02</div>
+            <h3>Accept mMHA Transfer</h3>
+            <p style="font-size: 0.9rem;">Agent wallet sends mMHA (ERC20) to recipient on M Hash L2. Monitor the transfer via the facilitator's strictVerify endpoint.</p>
+          </div>
+          <div class="card">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">03</div>
+            <h3>Facilitator Verify</h3>
+            <p style="font-size: 0.9rem;">MAGNE Facilitator strictly checks: amount, recipient, token, chainId must all match. No exceptions. Returns <code style="font-family: 'JetBrains Mono', monospace; color: #39d0d6; font-size: 0.8rem;">{status: 'verified'}</code> or <code style="font-family: 'JetBrains Mono', monospace; color: #f85149; font-size: 0.8rem;">{status: 'failed', reason: '...'}</code></p>
+          </div>
+          <div class="card">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">04</div>
+            <h3>AI Task Receipt</h3>
+            <p style="font-size: 0.9rem;">On successful verification, AITaskReceipt contract emits <code style="font-family: 'JetBrains Mono', monospace; color: #39d0d6; font-size: 0.8rem;">AITaskReceiptCreated</code> event on M Hash L2. Receipt is immutable and programmable.</p>
+          </div>
+          <div class="card">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">05</div>
+            <h3>Return API Result</h3>
+            <p style="font-size: 0.9rem;">After receipt is confirmed, return the API result to the agent. Full payment history is verifiable on-chain by any party — no trusted intermediary required.</p>
+          </div>
+          <div class="card" style="background: rgba(57,208,214,0.05); border-color: rgba(57,208,214,0.2);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #39d0d6; margin-bottom: 0.5rem;">→</div>
+            <h3>Full Demo Repo</h3>
+            <p style="font-size: 0.9rem;">Working demo with contracts, backend API, facilitator, and frontend MetaMask wallet integration.</p>
+            <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-secondary" target="_blank" style="margin-top: 0.75rem; display: inline-block; padding: 0.5rem 1rem; font-size: 0.85rem;">View GitHub Repo</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
 
   <footer>
     <div class="footer-brand-logo">
