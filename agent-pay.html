@@ -6,7 +6,7 @@
   <title>MAGNE Agent Pay V0.1 | x402-Compatible AI Agent Payment Demo</title>
   <meta name="description" content="MAGNE Agent Pay is a testnet-stage developer demo for x402-compatible AI agent payment, wallet authorization, facilitator verification, and AI Task Receipt generation on M Hash L2.">
   <meta property="og:title" content="MAGNE Agent Pay V0.1 | x402-Compatible AI Agent Payment Demo">
-  <meta property="og:description" content="A developer demo for AI agent payment on M Hash L2. 400ms block time. Under $0.0025 per transaction.">
+  <meta property="og:description" content="A developer demo for AI agent payment on M Hash L2. .">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://web3.magne.ai/agent-pay.html">
   <meta name="twitter:card" content="summary_large_image">
@@ -438,11 +438,11 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="val">400ms</div>
+          <div class="val">~400ms</div>
           <div class="lbl">Block Time</div>
         </div>
         <div class="hero-stat">
-          <div class="val">&lt;$0.0025</div>
+          <div class="val">~$0.01</div>
           <div class="lbl">Per Transaction</div>
         </div>
         <div class="hero-stat">
@@ -552,7 +552,7 @@
           <span class="terminal-title">magne@agent-pay-demo</span>
           <span class="terminal-badge">LOCAL RUNTIME VERIFIED</span>
         </div>
-        <div class="terminal-body"><span class="t-prompt">$</span> magne agent task create "analyze wallet risk"<span class="t-newline"></span><span class="t-ok">✓ task created</span> — <span class="t-val">task_20260520_001</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne api call wallet-risk --wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f2E26E<span class="t-newline"></span><span class="t-err">✕ 402 Payment Required</span><span class="t-newline"></span><span class="t-label">  amount: </span><span class="t-val">0.01 mMHA</span><span class="t-newline"></span><span class="t-label">  recipient: </span><span class="t-hash">0xf39Fd6e51aad88F6F4ce6aB8827279cffB922f66</span><span class="t-newline"></span><span class="t-label">  chain: </span><span class="t-val">mhash-l2-testnet (20250827)</span><span class="t-newline"></span><span class="t-label">  rpc: </span><span class="t-val">https://l2-rpc.testnet.magicalhash.com</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne pay settle --tx 0x130ba003e19e8a6edc2a7ae6147e1f7ff9411cb78b0dc875b9d5084df4b4701e --network mhash-l2<span class="t-newline"></span><span class="t-ok">✓ payment verified</span><span class="t-newline"></span><span class="t-label">  status: </span><span class="t-ok">verified</span><span class="t-newline"></span><span class="t-label">  block: </span><span class="t-val">4</span><span class="t-newline"></span><span class="t-label">  token: </span><span class="t-val">mMHA (ERC20)</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne receipt create --task task_20260520_001<span class="t-newline"></span><span class="t-ok">✓ AI Task Receipt created</span><span class="t-newline"></span><span class="t-label">  receiptId: </span><span class="t-hash">0x428d5f6dc07adf8f473793dcdc01c8041d979a521084759ca2e10dcb7152fe91</span><span class="t-newline"></span><span class="t-label">  tx: </span><span class="t-hash">0x7d423e93ed4ecd7b488394a71a9c711f8b30b7b1515e34a537030abce785a705</span><span class="t-newline"></span><span class="t-label">  explorer: </span><span class="t-val">local</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne receipt inspect 0x428d5f6dc07adf8f473793dcdc01c8041d979a521084759ca2e10dcb7152fe91<span class="t-newline"></span><span class="t-label">  agent:     </span><span class="t-val">MAGNE-Agent-001</span><span class="t-newline"></span><span class="t-label">  service:   </span><span class="t-val">wallet-risk-analysis</span><span class="t-newline"></span><span class="t-label">  amount:     </span><span class="t-val">0.01 mMHA</span><span class="t-newline"></span><span class="t-label">  status:    </span><span class="t-ok">settled</span><span class="t-newline"></span><span class="t-label">  network:   </span><span class="t-val">M Hash L2 (chainId: 20250827)</span><span class="t-newline"></span><span class="t-label">  payment tx: </span><span class="t-hash">0x130b…701e</span><span class="t-newline"></span><span class="t-prompt">$</span> <span class="cursor">█</span></div>
+        <div class="terminal-body"><span class="t-prompt">$</span> magne agent task create "analyze wallet risk"<span class="t-newline"></span><span class="t-ok">✓ task created</span> — <span class="t-val">task_20260520_001</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne api call wallet-risk --wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f2E26E<span class="t-newline"></span><span class="t-err">✕ 402 Payment Required</span><span class="t-newline"></span><span class="t-label">  amount: </span><span class="t-val">0.01 mMHA</span><span class="t-newline"></span><span class="t-label">  recipient: </span><span class="t-hash">0xf39Fd6e51aad88F6F4ce6aB8827279cffB922f66</span><span class="t-newline"></span><span class="t-label">  chain: </span><span class="t-val">local-hardhat (chainId: 31337)</span><span class="t-newline"></span><span class="t-label">  rpc: </span><span class="t-val">http://127.0.0.1:8545</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne pay settle --tx 0x130ba003e19e8a6edc2a7ae6147e1f7ff9411cb78b0dc875b9d5084df4b4701e --network mhash-l2<span class="t-newline"></span><span class="t-ok">✓ payment verified</span><span class="t-newline"></span><span class="t-label">  status: </span><span class="t-ok">verified</span><span class="t-newline"></span><span class="t-label">  block: </span><span class="t-val">4</span><span class="t-newline"></span><span class="t-label">  token: </span><span class="t-val">mMHA (ERC20)</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne receipt create --task task_20260520_001<span class="t-newline"></span><span class="t-ok">✓ AI Task Receipt created</span><span class="t-newline"></span><span class="t-label">  receiptId: </span><span class="t-hash">0x428d5f6dc07adf8f473793dcdc01c8041d979a521084759ca2e10dcb7152fe91</span><span class="t-newline"></span><span class="t-label">  tx: </span><span class="t-hash">0x7d423e93ed4ecd7b488394a71a9c711f8b30b7b1515e34a537030abce785a705</span><span class="t-newline"></span><span class="t-label">  explorer: </span><span class="t-val">local</span><span class="t-newline"></span><span class="t-newline"></span><span class="t-prompt">$</span> magne receipt inspect 0x428d5f6dc07adf8f473793dcdc01c8041d979a521084759ca2e10dcb7152fe91<span class="t-newline"></span><span class="t-label">  agent:     </span><span class="t-val">MAGNE-Agent-001</span><span class="t-newline"></span><span class="t-label">  service:   </span><span class="t-val">wallet-risk-analysis</span><span class="t-newline"></span><span class="t-label">  amount:     </span><span class="t-val">0.01 mMHA</span><span class="t-newline"></span><span class="t-label">  status:    </span><span class="t-ok">settled</span><span class="t-newline"></span><span class="t-label">  network:   </span><span class="t-val">local-hardhat</span><span class="t-newline"></span><span class="t-label">  payment tx: </span><span class="t-hash">0x130b…701e</span><span class="t-newline"></span><span class="t-prompt">$</span> <span class="cursor">█</span></div>
       </div>
     </div>
   </section>
@@ -605,7 +605,7 @@
   <span class="k">"version"</span>: <span class="str">"1.0"</span>,
   <span class="k">"provider"</span>: <span class="str">"MAGNE-Agent-001"</span>,
   <span class="k">"price"</span>: <span class="str">"0.01 mMHA"</span>,
-  <span class="k">"chain"</span>: <span class="str">"mhash-l2-testnet"</span>,
+  <span class="k">"chain"</span>: <span class="str">"local-hardhat"</span>,
   <span class="k">"chainId"</span>: <span class="num">20250827</span>,
   <span class="k">"paymentToken"</span>: <span class="str">"mMHA (ERC20)"</span>,
   <span class="k">"facilitator"</span>: <span class="str">"https://api.magne.ai/facilitator"</span>,
@@ -764,7 +764,7 @@
     <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" target="_blank">Agent Pay Demo</a>
   </p>
   <p class="footer-disclaimer">
-    MAGNE Agent Pay V0.1 is a testnet-stage developer demo. It is not a production payment system, not financial advice, and not a guarantee of future functionality. All transactions are on M Hash L2 testnet — no mainnet activity. MHA and mMHA are test tokens with no mainnet value. Subject to applicable compliance requirements.
+    MAGNE Agent Pay V0.1 is a testnet-stage developer demo. It is not a production payment system, not financial advice, and not a guarantee of future functionality. Current V0.1 transaction hashes are from local Hardhat runtime verification. M Hash L2 testnet deployment and explorer verification remain pending. MHA and mMHA are test tokens with no mainnet value. Subject to applicable compliance requirements.
   </p>
 </footer>
 
