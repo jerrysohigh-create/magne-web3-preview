@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAGNE Agent Pay — AI Payment Rails</title>
-  <meta name="description" content="Secure payment infrastructure for AI agents. x402-compatible, aligned with emerging open standard, settled on M Hash L2.">
+  <title>MAGNE Agent Pay — x402-Compatible AI Agent Payment</title>
+  <meta name="description" content="Secure AI agent payment infrastructure. x402-compatible, AP2-style authorization, AI Task Receipts on M Hash L2.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,72 +26,89 @@
       <a href="#demo" class="btn btn-primary">See Live Demo</a>
       <a href="#compatibility" class="btn btn-secondary">Compatibility Roadmap</a>
     </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val">20250827</div>
+        <div class="lbl">Chain ID</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">V0.1</div>
+        <div class="lbl">Local Runtime</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">x402</div>
+        <div class="lbl">Compatible</div>
+      </div>
     </div>
   </section>
 
   <!-- 02 — Problem Grid -->
   <section id="problems">
-    <h2 class="section-label">The Problem</h2>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>No Secure Authorization</h3>
-        <p>Traditional APIs return 401. No cryptographically verifiable authorization layer for agent-to-agent calls.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>No Agent Payment Flow</h3>
-        <p>Existing payment rails lack native support for AI task metering. Agents cannot reliably receive compensation.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>No Verifiable Receipts</h3>
-        <p>No immutable audit trail. Dispute resolution requires trusted intermediaries.</p>
+    <div class="container">
+      <h2 class="section-label">The Problem</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">✕</div>
+          <h3>No Secure Authorization</h3>
+          <p>Traditional APIs return 401. No cryptographically verifiable authorization layer for agent-to-agent calls.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">✕</div>
+          <h3>No Agent Payment Flow</h3>
+          <p>Existing payment rails lack native support for AI task metering. Agents cannot reliably receive compensation.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">✕</div>
+          <h3>No Verifiable Receipts</h3>
+          <p>No immutable audit trail. Dispute resolution requires trusted intermediaries.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 03 — Agent Pay Flow -->
   <section id="flow">
-    <h2 class="section-label">Agent Pay Flow</h2>
-    <div class="flow-diagram">
-      <div class="flow-step">
-        <div class="flow-num">01</div>
-        <div class="flow-content">
-          <h4>Task Created</h4>
-          <p>Agent creates task via API</p>
+    <div class="container">
+      <h2 class="section-label">Agent Pay Flow</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div class="flow-content">
+            <h4>Task Created</h4>
+            <p>Agent creates task via API</p>
+          </div>
         </div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-num">02</div>
-        <div class="flow-content">
-          <h4>402 Response</h4>
-          <p>API returns payment metadata</p>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div class="flow-content">
+            <h4>402 Response</h4>
+            <p>API returns payment metadata</p>
+          </div>
         </div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-num">03</div>
-        <div class="flow-content">
-          <h4>Authorization</h4>
-          <p>User authorizes via MAGNE Phone</p>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div class="flow-content">
+            <h4>Authorization</h4>
+            <p>User authorizes via MAGNE Phone</p>
+          </div>
         </div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-num">04</div>
-        <div class="flow-content">
-          <h4>M Hash L2 Settlement</h4>
-          <p>mMHA transfers on-chain</p>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <div class="flow-content">
+            <h4>M Hash L2 Settlement</h4>
+            <p>mMHA transfers on-chain</p>
+          </div>
         </div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="flow-num">05</div>
-        <div class="flow-content">
-          <h4>AI Task Receipt</h4>
-          <p>Immutable, auditable record</p>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-num">05</div>
+          <div class="flow-content">
+            <h4>AI Task Receipt</h4>
+            <p>Immutable, auditable record</p>
+          </div>
         </div>
       </div>
     </div>
@@ -99,15 +116,16 @@
 
   <!-- 04 — Live Demo Terminal -->
   <section id="demo">
-    <h2 class="section-label">Live Demo</h2>
-    <div class="terminal">
-      <div class="terminal-header">
-        <span class="terminal-dot red"></span>
-        <span class="terminal-dot yellow"></span>
-        <span class="terminal-dot green"></span>
-        <span class="terminal-title">magne — agent pay</span>
-      </div>
-      <pre><code><span class="prompt">$</span> <span class="cmd">magne agent task create "analyze wallet risk"</span>
+    <div class="container">
+      <h2 class="section-label">Live Demo</h2>
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">magne — agent pay</span>
+        </div>
+        <pre><code><span class="prompt">$</span> <span class="cmd">magne agent task create "analyze wallet risk"</span>
 <span class="success">✓</span> task created — task_20260520_001
 
 <span class="prompt">$</span> <span class="cmd">magne api call wallet-risk --wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f2bD26</span>
@@ -124,20 +142,25 @@
 <span class="prompt">$</span> <span class="cmd">magne receipt create --task task_20260520_001</span>
 <span class="success">✓</span> AI Task Receipt created
    receiptId: 0x428d5f6dc07adf8f473793dcdc01c8041d979a521084759ca2e10dcb7152fe91
-   explorer: <a href="https://l2-explorer.testnet.magicalhash.com/tx/0x7d423e93ed4ecd7b488394a71a9c711f8b30b7b1515e34a537030abce785a705" target="_blank">view on explorer</a></code></pre>
+   explorer: <a href="https://l2-explorer.testnet.magicalhash.com/tx/0x7d423e93ed4ecd7b488394a71a9c711f8b30b7b1515e34a537030abce785a705" target="_blank">view on explorer</a>
+
+<span class="comment">// Current V0.1: Local Hardhat runtime verified</span>
+<span class="comment">// M Hash L2 testnet deployment pending</span></code></pre>
+      </div>
     </div>
   </section>
 
   <!-- 05 — Receipt Layer -->
   <section id="receipts">
-    <h2 class="section-label">AI Task Receipt</h2>
-    <div class="receipt-grid">
-      <div class="receipt-explain">
-        <p>Every payment creates an immutable <strong>AI Task Receipt</strong> on M Hash L2. Programmable. Verifiable. Auditable by any party.</p>
-        <p>The receipt event structure:</p>
-      </div>
-      <div class="terminal receipt-event">
-        <pre><code><span class="comment">// AITaskReceiptCreated Event</span>
+    <div class="container">
+      <h2 class="section-label">AI Task Receipt</h2>
+      <div class="receipt-grid">
+        <div class="receipt-explain">
+          <p>Every payment creates an immutable <strong>AI Task Receipt</strong> on M Hash L2. Programmable. Verifiable. Auditable by any party.</p>
+          <p>The receipt event structure:</p>
+        </div>
+        <div class="terminal receipt-event">
+          <pre><code><span class="comment">// AITaskReceiptCreated Event</span>
 <span class="keyword">event</span> <span class="type">AITaskReceiptCreated</span>(
   <span class="type">bytes32</span> <span class="variable">receiptId</span>,
   <span class="type">bytes32</span> <span class="variable">taskId</span>,
@@ -148,33 +171,36 @@
   <span class="type">bytes32</span> <span class="variable">paymentTxHash</span>,
   <span class="type">uint256</span> <span class="variable">timestamp</span>
 );</code></pre>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 06 — Secure Phone Authorization -->
   <section id="phone">
-    <h2 class="section-label">Phone as Payment Terminal</h2>
-    <div class="phone-grid">
-      <div class="phone-text">
-        <h3>MAGNE Phone</h3>
-        <p>MAGNE turns secure phones into AI agent payment terminals. Authorization happens in a trusted execution environment. Hardware-backed signing. No middleman.</p>
-        <ul class="phone-features">
-          <li><span class="check">✓</span> TEE / Secure Element-backed key storage</li>
-          <li><span class="check">✓</span> Biometric authorization</li>
-          <li><span class="check">✓</span> Agent spending policy controls</li>
-          <li><span class="check">✓</span> x402-compatible session tokens</li>
-        </ul>
-      </div>
-      <div class="phone-diagram">
-        <div class="phone-box">
-          <div class="phone-icon">📱</div>
-          <div class="phone-label">MAGNE Phone</div>
+    <div class="container">
+      <h2 class="section-label">Phone as Payment Terminal</h2>
+      <div class="phone-grid">
+        <div class="phone-text">
+          <h3>MAGNE Phone</h3>
+          <p>MAGNE turns secure phones into AI agent payment terminals. Authorization happens in a trusted execution environment. Hardware-backed signing. No middleman.</p>
+          <ul class="phone-features">
+            <li><span class="check">✓</span> TEE / Secure Element-backed key storage</li>
+            <li><span class="check">✓</span> Biometric authorization</li>
+            <li><span class="check">✓</span> Agent spending policy controls</li>
+            <li><span class="check">✓</span> x402-compatible session tokens</li>
+          </ul>
         </div>
-        <div class="phone-arrow">→</div>
-        <div class="phone-box">
-          <div class="phone-icon">🤖</div>
-          <div class="phone-label">AI Agent</div>
+        <div class="phone-diagram">
+          <div class="phone-box">
+            <div class="phone-icon">📱</div>
+            <div class="phone-label">MAGNE Phone</div>
+          </div>
+          <div class="phone-arrow">→</div>
+          <div class="phone-box">
+            <div class="phone-icon">🤖</div>
+            <div class="phone-label">AI Agent</div>
+          </div>
         </div>
       </div>
     </div>
@@ -182,15 +208,16 @@
 
   <!-- 07 — Developer SDK / SKILL.md -->
   <section id="sdk">
-    <h2 class="section-label">Developer SDK</h2>
-    <div class="sdk-grid">
-      <div class="sdk-text">
-        <h3>Your Code + SKILL.md = Aapp</h3>
-        <p>Define your agent service as a SKILL.md contract. Any compatible agent can discover, call, and pay for your service.</p>
-        <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-secondary" target="_blank">View SKILL.md Reference</a>
-      </div>
-      <div class="terminal sdk-code">
-        <pre><code><span class="comment"># SKILL.md — Your Service Contract</span>
+    <div class="container">
+      <h2 class="section-label">Developer SDK</h2>
+      <div class="sdk-grid">
+        <div class="sdk-text">
+          <h3>Your Code + SKILL.md = Aapp</h3>
+          <p>Define your agent service as a SKILL.md contract. Any compatible agent can discover, call, and pay for your service.</p>
+          <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-secondary" target="_blank">View SKILL.md Reference</a>
+        </div>
+        <div class="terminal sdk-code">
+          <pre><code><span class="comment"># SKILL.md — Your Service Contract</span>
 <span class="yaml">---
 name: wallet-risk-analyzer
 description: Analyze wallet risk score
@@ -204,15 +231,17 @@ chain: mhash-l2 (20250827)
 <span class="variable">POST</span> <span class="string">/analyze</span>
   Body: { wallet: address }
   Returns: { riskScore: number, factors: string[] }</code></pre>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 08 — Runtime Verification Status -->
   <section id="status">
-    <h2 class="section-label">Runtime Verification</h2>
-    <div class="terminal status-terminal">
-      <pre><code><span class="status-ok">[✓]</span> Smart contracts compile
+    <div class="container">
+      <h2 class="section-label">Runtime Verification</h2>
+      <div class="terminal status-terminal">
+        <pre><code><span class="status-ok">[✓]</span> Smart contracts compile
 <span class="status-ok">[✓]</span> Smart contracts deploy (local Hardhat)
 <span class="status-pending">[⏳]</span> M Hash L2 testnet deployment pending
 <span class="status-ok">[✓]</span> Backend server runtime verified
@@ -221,202 +250,221 @@ chain: mhash-l2 (20250827)
 <span class="status-ok">[✓]</span> AI Task Receipt — tx confirmed
 <span class="status-pending">[⏳]</span> Browser MetaMask flow — pending real browser
 <span class="status-pending">[⏳]</span> M Hash L2 explorer link — pending testnet access</code></pre>
-    </div>
-    <div class="network-info">
-      <div class="info-item">
-        <span class="info-label">Network</span>
-        <span class="info-value">M Hash L2 Testnet</span>
       </div>
-      <div class="info-item">
-        <span class="info-label">Chain ID</span>
-        <span class="info-value">20250827</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">RPC</span>
-        <span class="info-value">l2-rpc.testnet.magicalhash.com</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Explorer</span>
-        <span class="info-value">l2-explorer.testnet.magicalhash.com</span>
+      <div class="network-info">
+        <div class="info-item">
+          <span class="info-label">Network</span>
+          <span class="info-value">M Hash L2 Testnet</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Chain ID</span>
+          <span class="info-value">20250827</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">RPC</span>
+          <span class="info-value">l2-rpc.testnet.magicalhash.com</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Explorer</span>
+          <span class="info-value">l2-explorer.testnet.magicalhash.com</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 09 — Roadmap + CTA -->
   <section id="roadmap">
-    <h2 class="section-label">Roadmap</h2>
-    <div class="roadmap-grid">
-      <div class="roadmap-item done">
-        <span class="roadmap-status">✓</span>
-        <div>
-          <h4>Smart Contract MVP</h4>
-          <p>Local Hardhat deployment complete</p>
+    <div class="container">
+      <h2 class="section-label">Roadmap</h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-item done">
+          <span class="roadmap-status">✓</span>
+          <div>
+            <h4>Smart Contract MVP</h4>
+            <p>Local Hardhat deployment complete</p>
+          </div>
+        </div>
+        <div class="roadmap-item done">
+          <span class="roadmap-status">✓</span>
+          <div>
+            <h4>Facilitator Pattern</h4>
+            <p>Strict on-chain verification working</p>
+          </div>
+        </div>
+        <div class="roadmap-item in-progress">
+          <span class="roadmap-status">⏳</span>
+          <div>
+            <h4>M Hash L2 Testnet</h4>
+            <p>Waiting for testnet access</p>
+          </div>
+        </div>
+        <div class="roadmap-item pending">
+          <span class="roadmap-status">○</span>
+          <div>
+            <h4>MetaMask Integration</h4>
+            <p>Browser wallet flow pending</p>
+          </div>
         </div>
       </div>
-      <div class="roadmap-item done">
-        <span class="roadmap-status">✓</span>
-        <div>
-          <h4>Facilitator Pattern</h4>
-          <p>Strict on-chain verification working</p>
-        </div>
+      <div class="cta-section">
+        <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-primary" target="_blank">Fork the Demo</a>
+        <a href="https://l2-explorer.testnet.magicalhash.com" class="btn btn-secondary" target="_blank">Explorer</a>
       </div>
-      <div class="roadmap-item in-progress">
-        <span class="roadmap-status">⏳</span>
-        <div>
-          <h4>M Hash L2 Testnet</h4>
-          <p>Waiting for testnet access</p>
-        </div>
-      </div>
-      <div class="roadmap-item pending">
-        <span class="roadmap-status">○</span>
-        <div>
-          <h4>MetaMask Integration</h4>
-          <p>Browser wallet flow pending</p>
-        </div>
-      </div>
-    </div>
-    <div class="cta-section">
-      <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-primary" target="_blank">Fork the Demo</a>
-      <a href="https://l2-explorer.testnet.magicalhash.com" class="btn btn-secondary" target="_blank">Explorer</a>
     </div>
   </section>
 
-  <!-- 10 — Compatibility Roadmap (NEW) -->
+  <!-- 10 — Compatibility Roadmap -->
   <section id="compatibility">
     <div class="container">
-    <h2 class="section-label">Compatibility Roadmap</h2>
-    <p class="compat-intro">MAGNE Agent Pay is aligned with the emerging open x402 standard and AP2-style authorization awareness. Not a Coinbase partnership — a developer demo for the broader ecosystem.</p>
-    
-    <div class="compat-grid">
-      <div class="compat-tier">
-        <h3 class="tier-p0">P0 — Must Align</h3>
-        <div class="compat-items">
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">x402 Foundation / Linux Foundation</span>
-              <span class="compat-badge p0">P0</span>
+      <h2 class="section-label">Compatibility Roadmap</h2>
+      <p class="compat-intro">MAGNE Agent Pay is aligned with the emerging open x402 standard and AP2-style authorization awareness. Not a Coinbase partnership — a developer demo for the broader ecosystem.</p>
+      
+      <div class="compat-grid">
+        <div class="compat-tier">
+          <h3 class="tier-p0">P0 — Must Align</h3>
+          <div class="compat-items">
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">x402 Foundation / Linux Foundation</span>
+                <span class="compat-badge p0">P0</span>
+              </div>
+              <p>Aligned with emerging open x402 standard (not Coinbase-specific). x402 Foundation announced April 2026 under Linux Foundation.</p>
             </div>
-            <p>Aligned with emerging open x402 standard (not Coinbase-specific). x402 Foundation announced April 2026 under Linux Foundation with Coinbase, Cloudflare, Stripe, Google, Visa, Mastercard, Circle, AWS, Microsoft, Shopify, Solana Foundation, Polygon Labs, thirdweb.</p>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">Google AP2 / Authorization</span>
+                <span class="compat-badge p0">P0</span>
+              </div>
+              <p>AP2-style authorization / trust layer. MAGNE Phone as secure authorization terminal with TEE/SE-backed signing.</p>
+            </div>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">MAGNE Facilitator</span>
+                <span class="compat-badge p0">P0</span>
+              </div>
+              <p>M Hash L2-oriented facilitator module. Not a replacement for global x402 facilitators — secure mobile auth + AI Task Receipt.</p>
+            </div>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">USDC / Stablecoin Support</span>
+                <span class="compat-badge p0">P0</span>
+              </div>
+              <p>V0.1: mMHA local. V0.2: mMHA on M Hash L2. V0.3: stablecoin-style asset. V1.0: USDC-compatible if bridge/liquidity ready.</p>
+            </div>
           </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Google AP2 / Authorization</span>
-              <span class="compat-badge p0">P0</span>
+        </div>
+
+        <div class="compat-tier">
+          <h3 class="tier-p1">P1 — Reference Align</h3>
+          <div class="compat-items">
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">Base / CDP Pattern</span>
+                <span class="compat-badge p1">P1</span>
+              </div>
+              <p>Reference align with Coinbase CDP Facilitator pattern: verify / settle / KYT flow.</p>
             </div>
-            <p>AP2-style authorization / trust layer. MAGNE Phone as secure authorization terminal with TEE/SE-backed signing and agent spending controls.</p>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">BNB Chain / Binance</span>
+                <span class="compat-badge p1">P1</span>
+              </div>
+              <p>Preserve Binance ecosystem compatibility narrative for future multi-chain alignment.</p>
+            </div>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">Solana</span>
+                <span class="compat-badge p1">P1</span>
+              </div>
+              <p>Solana Web3 phone as competitor reference. x402.org test facilitator supports Solana Devnet.</p>
+            </div>
           </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">MAGNE Facilitator</span>
-              <span class="compat-badge p0">P0</span>
+        </div>
+
+        <div class="compat-tier">
+          <h3 class="tier-p2">P2 — Observe / Future</h3>
+          <div class="compat-items">
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">Stripe Tempo / MPP</span>
+                <span class="compat-badge p2">P2</span>
+              </div>
+              <p>Enterprise-grade machine payments / session pre-authorization. Future roadmap may explore.</p>
             </div>
-            <p>M Hash L2-oriented facilitator module. Not a replacement for global x402 facilitators — focuses on secure mobile authorization and AI Task Receipt creation.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">USDC / Stablecoin Support</span>
-              <span class="compat-badge p0">P0</span>
+            <div class="compat-item">
+              <div class="compat-header">
+                <span class="compat-name">OpenAI ACP</span>
+                <span class="compat-badge p2">P2</span>
+              </div>
+              <p>Agent-to-merchant checkout. Future roadmap may explore merchant interoperability.</p>
             </div>
-            <p>V0.1: mMHA local demo. V0.2: mMHA on M Hash L2. V0.3: stablecoin-style settlement asset. V1.0: USDC-compatible flow if bridge / liquidity ready.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Cloudflare / MCP / Agent Infra</span>
-              <span class="compat-badge p0">P0</span>
-            </div>
-            <p>MCP-style tool calls + HTTP 402 paid API. Cloudflare Agents SDK / MCP server integration. Paid inference API, wallet risk API, chain data API.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Wallet / Agent Wallet</span>
-              <span class="compat-badge p0">P0</span>
-            </div>
-            <p>EVM wallet compatible. TEE / Secure Element-backed signing. Agent spending policy controls. Future: WalletConnect, embedded wallet style.</p>
           </div>
         </div>
       </div>
 
-      <div class="compat-tier">
-        <h3 class="tier-p1">P1 — Reference Align</h3>
-        <div class="compat-items">
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Base / CDP Pattern</span>
-              <span class="compat-badge p1">P1</span>
-            </div>
-            <p>Reference align with Coinbase CDP Facilitator pattern: verify / settle / KYT flow. Base mainnet, Base Sepolia, Polygon, Arbitrum compatibility.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">BNB Chain / Binance</span>
-              <span class="compat-badge p1">P1</span>
-            </div>
-            <p>Preserve Binance ecosystem compatibility narrative. BNB chain as reference for future multi-chain alignment.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Solana</span>
-              <span class="compat-badge p1">P1</span>
-            </div>
-            <p>Solana Web3 phone as competitor reference. x402.org test facilitator supports Solana Devnet. Solana as reference for multi-chain facilitator patterns.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">OpenZeppelin Relayer</span>
-              <span class="compat-badge p1">P1</span>
-            </div>
-            <p>Enterprise relayer / audited infrastructure reference for future facilitator development.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">OpenFacilitator / OpenX402.ai</span>
-              <span class="compat-badge p1">P1</span>
-            </div>
-            <p>Open source, self-deployed, permissionless facilitator as reference architecture.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="compat-tier">
-        <h3 class="tier-p2">P2 — Observe / Future</h3>
-        <div class="compat-items">
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Stripe Tempo / MPP</span>
-              <span class="compat-badge p2">P2</span>
-            </div>
-            <p>Enterprise-grade machine payments / session pre-authorization. Future roadmap may explore session-based authorization.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">OpenAI ACP</span>
-              <span class="compat-badge p2">P2</span>
-            </div>
-            <p>Agent-to-merchant checkout. Future roadmap may explore merchant checkout interoperability.</p>
-          </div>
-          <div class="compat-item">
-            <div class="compat-header">
-              <span class="compat-name">Stellar / Algorand / HyperEVM</span>
-              <span class="compat-badge p2">P2</span>
-            </div>
-            <p>Observe multi-chain facilitator patterns. No immediate integration planned.</p>
-          </div>
-        </div>
+      <div class="compat-summary">
+        <h3>MAGNE Positioning</h3>
+        <p>x402-compatible payment execution<br>
+        + AP2-style authorization awareness<br>
+        + M Hash L2 receipt<br>
+        + MAGNE Phone secure signing<br>
+        + Future stablecoin settlement support</p>
       </div>
     </div>
+  </section>
 
-    <div class="compat-summary">
-      <h3>MAGNE Positioning</h3>
-      <p>x402-compatible payment execution<br>
-      + AP2-style authorization awareness<br>
-      + M Hash L2 receipt<br>
-      + MAGNE Phone secure signing<br>
-      + Future stablecoin settlement support</p>
+  <!-- Where MAGNE Fits -->
+  <section id="where-magne-fits">
+    <div class="container">
+      <h2 class="section-label">Where MAGNE Fits</h2>
+      <p class="where-intro">MAGNE is not competing with Coinbase, OKX, or Binance. It focuses on a specific layer: secure mobile authorization and verifiable AI Task Receipts on M Hash L2.</p>
+      <div class="compat-table">
+        <div class="compat-row header">
+          <div class="compat-cell">Protocol</div>
+          <div class="compat-cell">Core Focus</div>
+          <div class="compat-cell">MAGNE Alignment</div>
+        </div>
+        <div class="compat-row">
+          <div class="compat-cell mono">Coinbase x402</div>
+          <div class="compat-cell">HTTP-native payment protocol for pay-per-use APIs and web resources</div>
+          <div class="compat-cell">x402-compatible flow — same payment handshake</div>
+        </div>
+        <div class="compat-row">
+          <div class="compat-cell mono">OKX APP</div>
+          <div class="compat-cell">Agent commercial workflow: intents, brokers, escrow, metering, disputes</div>
+          <div class="compat-cell">Reference only — different scope</div>
+        </div>
+        <div class="compat-row">
+          <div class="compat-cell mono">Binance x402</div>
+          <div class="compat-cell">BNB Chain implementation for programmable payments</div>
+          <div class="compat-cell">Reference only — different chain ecosystem</div>
+        </div>
+        <div class="compat-row highlight">
+          <div class="compat-cell mono">MAGNE Agent Pay</div>
+          <div class="compat-cell">Secure mobile authorization + facilitator verification + AI Task Receipt on M Hash L2</div>
+          <div class="compat-cell">Core focus — our differentiation</div>
+        </div>
+      </div>
+      <p class="compliance-note">References to Coinbase, OKX, Binance, x402 Foundation, and BNB Chain are for ecosystem comparison only and do not imply partnership, endorsement, integration, or affiliation.</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Start Building</h2>
+        <p>Fork the demo, read the SKILL.md, and ship your first agent payment integration.</p>
+        <div class="cta-group">
+          <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-primary" target="_blank">Fork the Demo</a>
+          <a href="https://github.com/jerrysohigh-create/magne-web3-preview" class="btn btn-secondary" target="_blank">View Source</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="footer-content">
+    <div class="container">
       <div class="footer-warning">
         ⚠️ Testnet-stage developer demo. Not production-ready. Subject to technical validation. Compatible with emerging open x402 standard, not an official Coinbase or x402 Foundation partnership.
       </div>
