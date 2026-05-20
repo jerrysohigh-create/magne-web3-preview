@@ -3,70 +3,327 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | FAQ</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="Frequently Asked Questions about MAGNE.AI Web3. Learn about the project, token, testnets, device-based participation, and more.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | FAQ">
+  <meta property="og:description" content="Frequently Asked Questions about MAGNE.AI Web3. Learn about the project, token, testnets, device-based participation, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/faq.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | FAQ">
+  <meta name="twitter:description" content="Frequently Asked Questions about MAGNE.AI Web3. Learn about the project, token, testnets, device-based participation, and more.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+
+    h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
+    p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; overflow-wrap: anywhere; word-break: break-word; }
+
+    .hero { 
+      text-align: center; 
+      padding: 8rem 2rem 5rem;
+      background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%);
+    }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 650px; margin: 0 auto; }
+
+    .faq-list { max-width: 800px; margin: 0 auto; }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(255,215,0,0.2); }
+    .faq-item h3 { color: var(--text-primary); margin-bottom: 0.75rem; cursor: pointer; }
+    .faq-item .answer { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+    .faq-item .answer p { margin-bottom: 0.75rem; }
+    .faq-item .answer p:last-child { margin-bottom: 0; }
+
+    .disclaimer {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    .disclaimer p { font-size: 0.9rem; }
+
+    footer {
+      text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; overflow-wrap: anywhere; word-break: break-word; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; overflow-wrap: anywhere; word-break: break-word; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { 
+        display: none; 
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10, 10, 12, 0.98);
+        flex-direction: column; padding: 1.5rem; gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .faq-item { padding: 1.25rem; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/faq.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/faq.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="faq">
-
-    <section class="hero compact">
+  <main>
+    <!-- Hero -->
+    <section class="hero">
       <h1>Frequently Asked Questions</h1>
+      <p>Common questions about MAGNE.AI project, technology, and ecosystem.</p>
     </section>
 
-    <section class="section">
+    <!-- FAQ Section -->
+    <section>
       <div class="container">
-        <h2 class="section-label">General</h2>
         <div class="faq-list">
+
           <div class="faq-item">
-            <h3>What is MAGNE Agent Pay?</h3>
-            <p> MAGNE Agent Pay is an x402-compatible payment flow for AI agents, with secure mobile authorization and on-chain AI Task Receipts on M Hash L2.</p>
+            <h3>What is MAGNE.AI?</h3>
+            <div class="answer">
+              <p>MAGNE.AI is a Web3-native AI smartphone and blockchain infrastructure project. It combines secure mobile hardware, MAGNE L1 (the base blockchain network), M Hash L2 (the Layer 2 scaling network), and DePIN (decentralized physical infrastructure network) compute participation into one unified ecosystem.</p>
+            </div>
           </div>
+
           <div class="faq-item">
-            <h3>How does it work?</h3>
-            <p>Agents create tasks, receive 402 payment responses, users authorize via MAGNE Phone, mMHA transfers on-chain, and immutable receipts are created.</p>
+            <h3>Is MAGNE.AI a phone company, blockchain project, or AI project?</h3>
+            <div class="answer">
+              <p>MAGNE.AI is an integrated project that spans all three areas:</p>
+              <p>• <strong>Hardware:</strong> MAGNE.AI Phone Gen1 is a smartphone designed for digital asset ownership and secure Web3 access.</p>
+              <p>• <strong>Blockchain:</strong> MAGNE L1 and M Hash L2 provide the decentralized infrastructure layer.</p>
+              <p>• <strong>AI + DePIN:</strong> Future device-based participation programs will enable AI compute contribution and network participation.</p>
+              <p>The project is designed to integrate these components into one seamless ecosystem.</p>
+            </div>
           </div>
+
           <div class="faq-item">
-            <h3>What is x402?</h3>
-            <p>x402 is an emerging open standard for HTTP-native payments managed by the x402 Foundation under Linux Foundation.</p>
+            <h3>What is MAGNE.AI Phone Gen1?</h3>
+            <div class="answer">
+              <p>MAGNE.AI Phone Gen1 is designed as a Web3-native AI smartphone integrating hardware-secured wallet access, dual-space architecture, NFC encrypted asset backup, Android 15, Google GMS compatibility, and privacy-sensitive on-device AI workflows.</p>
+              <p>• Hardware-secured wallet with TEE and CC EAL6+ secure element architecture</p>
+              <p>• Private dual-space system that separates Web2 and Web3 environments</p>
+              <p>• NFC encrypted asset backup via the HYPERSEED 72B NFC Backup Card</p>
+              <p>• Android 15 operating system with Google GMS compatibility</p>
+              <p>• On-device AI capabilities with privacy-sensitive workflows</p>
+              <p>Full specifications and availability information will be announced through official channels.</p>
+            </div>
           </div>
+
+          <div class="faq-item">
+            <h3>What are MAGNE L1 and M Hash L2?</h3>
+            <div class="answer">
+              <p><strong>MAGNE L1</strong> is the EVM-compatible base blockchain network designed for native Web3 applications, asset ownership, and ecosystem coordination. The testnet is currently live.</p>
+              <p><strong>M Hash L2</strong> is an OP Stack-based Layer 2 network designed for scalable smart contract execution, lower transaction costs, and developer experimentation. The testnet is currently live.</p>
+              <p>Both networks are in testnet phase. Mainnet launch is in planning and development.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is the MAGNE mainnet live?</h3>
+            <div class="answer">
+              <p>No. Both MAGNE L1 and M Hash L2 are currently operating on testnet. The mainnet is in planning and development. Specific timelines for mainnet launch will be announced through official channels when confirmed.</p>
+              <p>Testnet parameters may change. Do not use testnet endpoints for production purposes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>What is $MHA used for?</h3>
+            <div class="answer">
+              <p>$MHA is the native utility token of the MAGNE.AI ecosystem. Planned utility includes:</p>
+              <p>• <strong>Gas:</strong> Transaction fees on MAGNE L1 and M Hash L2</p>
+              <p>• <strong>Staking:</strong> Participation in network validation (subject to governance rules)</p>
+              <p>• <strong>Governance:</strong> On-chain voting for protocol upgrades and ecosystem decisions</p>
+              <p>• <strong>Future utility:</strong> Device incentives, AI compute participation, and ecosystem access (in development, subject to governance approval)</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>Does MAGNE.AI guarantee rewards or returns?</h3>
+            <div class="answer">
+              <p><strong>No.</strong> MAGNE.AI does not guarantee any token rewards, income, profit, liquidity, exchange listing, or token value.</p>
+              <p>Any future device-based participation, incentive, staking, or governance-related program will be subject to:</p>
+              <p>• Governance-approved rules</p>
+              <p>• Technical availability</p>
+              <p>• Eligibility requirements</p>
+              <p>• Applicable terms</p>
+              <p>• Regulatory considerations</p>
+              <p>Token-related information is for technical and ecosystem communication only and does not constitute investment advice.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>How are device-based participation programs governed?</h3>
+            <div class="answer">
+              <p>Future device-based participation programs will be governed by on-chain governance mechanisms. Key aspects include:</p>
+              <p>• Governance participants may vote on program parameters once the relevant governance mechanisms are launched.</p>
+              <p>• Allocation and distribution rules will be subject to governance approval</p>
+              <p>• Technical implementation will depend on mainnet launch and network readiness</p>
+              <p>• Program details are subject to change based on governance decisions and regulatory requirements</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>Where can I find legal documents and archived materials?</h3>
+            <div class="answer">
+              <p>All legal documents, archived materials, and disclosures are available in our <a href="transparency.html" style="color: var(--accent);">Transparency Center</a>, including:</p>
+              <p>• Archived Whitepaper V1.0</p>
+              <p>• Legal Opinion from GS LEGAL LLC</p>
+              <p>• Smart Contract Audit Reports (in progress)</p>
+              <p>• Token Disclosure</p>
+              <p>• Risk Disclosure</p>
+              <p>• Forward-Looking Statement</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>Are the whitepaper and legal opinion still valid after website updates?</h3>
+            <div class="answer">
+              <p>The archived whitepaper and legal opinion are provided for <strong>historical transparency only</strong>. They were issued based on materials reviewed at the time of issuance.</p>
+              <p>These documents should not be interpreted as a legal endorsement of:</p>
+              <p>• Subsequent website updates</p>
+              <p>• Future product features</p>
+              <p>• Token market activity</p>
+              <p>• Third-party decisions</p>
+              <p>For current documentation and due diligence, please refer to the <a href="transparency.html" style="color: var(--accent);">Transparency Center</a> or contact us directly.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>How can developers start building?</h3>
+            <div class="answer">
+              <p>Developers can access:</p>
+              <p>• Network configuration for <a href="developers.html" style="color: var(--accent);">MAGNE L1 Testnet</a> (Chain ID: 20250810)</p>
+              <p>• Network configuration for <a href="developers.html" style="color: var(--accent);">M Hash L2 Testnet</a> (Chain ID: 20250827)</p>
+              <p>• Quickstart guides and code examples</p>
+              <p>• Block explorers and developer tools</p>
+              <p>Visit our <a href="developers.html" style="color: var(--accent);">Developer Hub</a> for full documentation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>How can partners contact MAGNE.AI?</h3>
+            <div class="answer">
+              <p>For partnership inquiries, exchange listings, legal questions, or institutional due diligence requests, please contact us through official channels:</p>
+              <p>• Visit our <a href="https://magne.ai/magne-contact.html" target="_blank" style="color: var(--accent);">Contact Page</a></p>
+              <p>• Telegram: <a href="https://t.me/MagneAI" target="_blank" style="color: var(--accent);">@MagneAI</a></p>
+              <p>• Twitter/X: <a href="https://x.com/Magne_Ai" target="_blank" style="color: var(--accent);">@Magne_Ai</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+          <p><strong>Disclaimer:</strong> MAGNE.AI does not guarantee any token rewards, income, profit, liquidity, exchange listing, or token value. Any future device-based participation, incentive, staking, or governance-related program will be subject to governance-approved rules, technical availability, eligibility requirements, applicable terms, and regulatory considerations. This FAQ is for informational purposes only and does not constitute legal, financial, or investment advice.</p>
         </div>
       </div>
     </section>
-
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -76,7 +333,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

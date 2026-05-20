@@ -3,87 +3,401 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developers | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Deploy Smart Contracts</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="Deploy smart contracts on MAGNE testnets using Hardhat and Foundry. Step-by-step deployment guides for MAGNE L1 and M Hash L2.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Deploy Smart Contracts">
+  <meta property="og:description" content="Deploy smart contracts on MAGNE testnets using Hardhat and Foundry. Step-by-step deployment guides for MAGNE L1 and M Hash L2.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/developers-contract.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Deploy Smart Contracts">
+  <meta name="twitter:description" content="Deploy smart contracts on MAGNE testnets using Hardhat and Foundry. Step-by-step deployment guides for MAGNE L1 and M Hash L2.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; }
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 4rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1rem; line-height: 1.75; overflow-wrap: anywhere; word-break: break-word; }
+    .hero { text-align: center; padding: 6rem 2rem 4rem; background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%); }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 650px; margin: 0 auto; }
+    .step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .step-number { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3); color: var(--accent); border-radius: 50%; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+    .step-title { font-size: 1.2rem; font-weight: 600; }
+    .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .network-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .network-card h3 { color: var(--accent); margin-bottom: 1rem; }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid var(--border); }
+    .info-table td { padding: 0.6rem 0; }
+    .info-table td:first-child { color: var(--text-secondary); width: 100px; font-size: 0.9rem; }
+    .info-table td:last-child { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; word-break: break-all; }
+    pre { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin: 1rem 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; }
+    code { background: var(--bg-card); border: 1px solid var(--border); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    pre code { background: none; border: none; padding: 0; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .notice { background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.15); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+    .notice p { font-size: 0.9rem; }
+    .security-notice { background: rgba(255, 100, 100, 0.05); border: 1px solid rgba(255, 100, 100, 0.2); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+    .security-notice h3 { color: #ff6462; margin-bottom: 0.75rem; }
+    .security-notice p { font-size: 0.9rem; }
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+    .faq-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .faq-item p { font-size: 0.95rem; }
+    ul { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-left: 1.5rem; margin-top: 0.75rem; }
+    li { margin-bottom: 0.5rem; }
+    footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; overflow-wrap: anywhere; word-break: break-word; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; overflow-wrap: anywhere; word-break: break-word; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10, 10, 12, 0.98); flex-direction: column; padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      .step-card { padding: 1.25rem; }
+      pre { font-size: 0.75rem; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/developers-contract.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/developers-contract.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="developers">
-
-    <section class="hero compact">
-      <div class="badge"><span class="badge-dot"></span> Developer Docs</div>
-      <h1>Build with MAGNE Agent Pay</h1>
-      <p class="subhead">x402-compatible payment flows for AI agents. Fork the demo, read the SKILL.md, ship your integration.</p>
+  <main>
+    <section class="hero">
+      <h1>Deploy Smart Contracts on MAGNE Testnets</h1>
+      <p>Guide for developers to deploy test smart contracts on MAGNE L1 and M Hash L2 testnets using Hardhat or Foundry.</p>
     </section>
 
-    <section class="section">
+    <section>
       <div class="container">
-        <h2 class="section-label">Quick Start</h2>
-        <div class="terminal">
-          <pre><code><span class="prompt">$</span> <span class="cmd">git clone https://github.com/jerrysohigh-create/magne-agent-pay-demo</span>
-<span class="prompt">$</span> <span class="cmd">cd magne-agent-pay-demo/contracts</span>
-<span class="prompt">$</span> <span class="cmd">npm install</span>
-<span class="prompt">$</span> <span class="cmd">npx hardhat compile</span>
-
-<span class="comment">// Deploy to M Hash L2 Testnet</span>
-<span class="prompt">$</span> <span class="cmd">npx hardhat run scripts/deploy.js --network mhashL2Testnet</span></code></pre>
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <span class="step-title">Overview</span>
+          </div>
+          <div class="notice">
+            <p><strong>Testnet Only</strong> — This guide is for testnet deployment only. MAGNE L1 Testnet and M Hash L2 Testnet are EVM-compatible environments for developer experimentation. Testnet tokens have no monetary value. Network parameters may change as testing progresses.</p>
+          </div>
+          <ul>
+            <li>MAGNE L1 and M Hash L2 are EVM-compatible networks</li>
+            <li>Works with standard Ethereum development tools</li>
+            <li>Deploy Solidity smart contracts for testing</li>
+            <li>Verify contracts on block explorers</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section>
       <div class="container">
-        <h2 class="section-label">HTTP 402 Response</h2>
-        <div class="terminal">
-          <pre><code><span class="comment">// When payment is required, your API returns:</span>
-<span class="keyword">HTTP</span> <span class="type">402</span> <span class="variable">Payment Required</span>
-<span class="string">X-Payment-Amount</span>: <span class="type">0.01 mMHA</span>
-<span class="string">X-Payment-Recipient</span>: <span class="type">0xf39F...2266</span>
-<span class="string">X-Payment-Chain</span>: <span class="type">mhash-l2-testnet (20250827)</span>
+        <h2>Network Parameters</h2>
+        <div class="network-grid">
+          <div class="network-card">
+            <h3>MAGNE L1 Testnet</h3>
+            <table class="info-table">
+              <tr><td>RPC URL</td><td>https://rpc.testnet.magicalhash.com</td></tr>
+              <tr><td>Chain ID</td><td>20250810</td></tr>
+              <tr><td>Symbol</td><td>MHA</td></tr>
+              <tr><td>Explorer</td><td>https://explorer.testnet.magicalhash.com</td></tr>
+            </table>
+          </div>
+          <div class="network-card">
+            <h3>M Hash L2 Testnet</h3>
+            <table class="info-table">
+              <tr><td>RPC URL</td><td>https://l2-rpc.testnet.magicalhash.com</td></tr>
+              <tr><td>Chain ID</td><td>20250827</td></tr>
+              <tr><td>Symbol</td><td>MHA</td></tr>
+              <tr><td>Explorer</td><td>https://l2-explorer.testnet.magicalhash.com</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
-{
-  <span class="string">"error"</span>: <span class="string">"payment_required"</span>,
-  <span class="string">"amount"</span>: <span class="string">"0.01"</span>,
-  <span class="string">"token"</span>: <span class="string">"mMHA"</span>,
-  <span class="string">"paymentTxHash"</span>: <span class="string">"0x130b...701e"</span>
+    <section>
+      <div class="container">
+        <h2>Hardhat Deployment</h2>
+        <div class="step-card">
+          <h3>1. Install Hardhat</h3>
+          <pre><code>npm init -y
+npm install --save-dev hardhat
+npx hardhat init</code></pre>
+        </div>
+        <div class="step-card">
+          <h3>2. Configure hardhat.config.js</h3>
+          <pre><code>require("@nomicfoundation/hardhat-ethers");
+
+module.exports = {
+  solidity: "0.8.20",
+  networks: {
+    'magne-l1': {
+      url: "https://rpc.testnet.magicalhash.com",
+      chainId: 20250810,
+    },
+    'magne-l2': {
+      url: "https://l2-rpc.testnet.magicalhash.com",
+      chainId: 20250827,
+    },
+  },
+};</code></pre>
+        </div>
+        <div class="step-card">
+          <h3>3. Create .env File</h3>
+          <pre><code># Never commit this file to version control
+TESTNET_PRIVATE_KEY=your_test_wallet_private_key
+L1_RPC_URL=https://rpc.testnet.magicalhash.com
+L2_RPC_URL=https://l2-rpc.testnet.magicalhash.com</code></pre>
+          <div class="security-notice">
+            <h3>Security</h3>
+            <p>Use a dedicated test wallet. Never use wallets holding real assets. Never commit .env files or private keys to public repositories.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <h3>4. Deploy Contract</h3>
+          <pre><code>const hre = require("hardhat");
+
+async function main() {
+  const HelloMagne = await hre.ethers.getContractFactory("HelloMagne");
+  const contract = await HelloMagne.deploy("Hello MAGNE!");
+  await contract.deployed();
+  console.log("Contract deployed to:", contract.address);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});</code></pre>
+          <p style="margin-top: 1rem;">Run deployment:</p>
+          <pre><code>L1_DEPLOY:
+npx hardhat run scripts/deploy.js --network magne-l1
+
+L2_DEPLOY:
+npx hardhat run scripts/deploy.js --network magne-l2</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Foundry Deployment</h2>
+        <div class="step-card">
+          <h3>1. Install Foundry</h3>
+          <pre><code>curl -L https://foundry.paradigm.xyz | bash
+foundryup</code></pre>
+        </div>
+        <div class="step-card">
+          <h3>2. Create Project</h3>
+          <pre><code>forge init my-magne-contract
+cd my-magne-contract</code></pre>
+        </div>
+        <div class="step-card">
+          <h3>3. Set Environment</h3>
+          <pre><code>export TESTNET_PRIVATE_KEY=your_test_wallet_private_key
+export L1_RPC_URL=https://rpc.testnet.magicalhash.com
+export L2_RPC_URL=https://l2-rpc.testnet.magicalhash.com</code></pre>
+        </div>
+        <div class="step-card">
+          <h3>4. Create Deployment Script</h3>
+          <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "forge-std/Script.sol";
+import "../src/HelloMagne.sol";
+
+contract DeployScript is Script {
+    function run() external {
+        vm.broadcast();
+        new HelloMagne("Hello MAGNE!");
+    }
 }</code></pre>
         </div>
+        <div class="step-card">
+          <h3>5. Deploy</h3>
+          <pre><code>L1_DEPLOY:
+forge script script/Deploy.s.sol:DeployScript --rpc-url $L1_RPC_URL --broadcast --private-key $TESTNET_PRIVATE_KEY
+
+L2_DEPLOY:
+forge script script/Deploy.s.sol:DeployScript --rpc-url $L2_RPC_URL --broadcast --private-key $TESTNET_PRIVATE_KEY</code></pre>
+          <div class="security-notice">
+            <h3>Security</h3>
+            <p>Use a dedicated test wallet. Never expose private keys in scripts or environment variables in production frontends.</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <section>
+      <div class="container">
+        <h2>Sample Contract</h2>
+        <div class="step-card">
+          <h3>HelloMagne.sol</h3>
+          <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract HelloMagne {
+    string public message;
+
+    constructor(string memory initialMessage) {
+        message = initialMessage;
+    }
+
+    function setMessage(string calldata newMessage) external {
+        message = newMessage;
+    }
+}</code></pre>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">This contract is for testing and educational purposes only. Review and audit any contract before using in production environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Verify Deployment</h2>
+        <div class="step-card">
+          <ul>
+            <li><strong>Check explorer:</strong> View your contract address on the block explorer</li>
+            <li><strong>Read contract:</strong> Call view functions to confirm deployment</li>
+            <li><strong>Write functions:</strong> Test state-changing transactions with small values</li>
+            <li><strong>Save addresses:</strong> Record deployed contract addresses for your application</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Troubleshooting</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>RPC timeout</h4>
+            <p>Check your internet connection. If the RPC endpoint is under maintenance, wait and retry. Try the other testnet RPC as backup.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Chain ID mismatch</h4>
+            <p>Ensure you entered the correct Chain ID: 20250810 (L1) or 20250827 (L2). Remove and re-add the network if needed.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Insufficient testnet MHA</h4>
+            <p>Ensure you have testnet tokens. Contact <a href="https://t.me/MagneAI" style="color: var(--accent);">@MagneAI</a> for testnet token requests.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Deployment transaction pending</h4>
+            <p>Testnet transactions may take longer during high traffic. Check the explorer for pending status. L2 typically confirms faster than L1.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Compiler version mismatch</h4>
+            <p>Ensure your Solidity compiler version matches the pragma in your contract. Check for warnings in Hardhat/Foundry output.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Nonce too low</h4>
+            <p>Reset your wallet's nonce or wait for pending transactions to complete. Some wallets allow nonce reset in settings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="security-notice">
+          <h3>⚠️ Security Notes</h3>
+          <p><strong>Use a dedicated test wallet.</strong> Never use wallets holding real assets for testnet development.</p>
+          <p style="margin-top: 0.75rem;"><strong>Never commit private keys, seed phrases, or .env files</strong> to version control or public repositories.</p>
+          <p style="margin-top: 0.75rem;"><strong>Testnet tokens have no monetary value.</strong> Smart contract examples are for testing and educational purposes only.</p>
+          <p style="margin-top: 0.75rem;">MAGNE.AI team will never ask for your private keys or seed phrases.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Developer Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+          <a href="developers.html" class="btn btn-secondary">Developer Docs</a>
+          <a href="developers-connect.html" class="btn btn-secondary">Connect Wallet</a>
+          <a href="network.html" class="btn btn-secondary">Network Status</a>
+          <a href="https://github.com/magicalhash" target="_blank" class="btn btn-secondary">GitHub</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -93,7 +407,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

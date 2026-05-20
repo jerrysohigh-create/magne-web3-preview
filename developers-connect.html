@@ -3,87 +3,449 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developers | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Connect to Testnets</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="How to connect to MAGNE L1 and M Hash L2 testnets. MetaMask setup guide, network parameters, and testnet connection instructions.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Connect to Testnets">
+  <meta property="og:description" content="How to connect to MAGNE L1 and M Hash L2 testnets. MetaMask setup guide, network parameters, and testnet connection instructions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/developers-connect.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Connect to Testnets">
+  <meta name="twitter:description" content="How to connect to MAGNE L1 and M Hash L2 testnets. MetaMask setup guide, network parameters, and testnet connection instructions.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 4rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; overflow-wrap: anywhere; word-break: break-word; }
+
+    .hero { 
+      text-align: center; 
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%);
+    }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 650px; margin: 0 auto; }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(255,215,0,0.15);
+      border: 1px solid rgba(255,215,0,0.3);
+      color: var(--accent);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 1.2rem; font-weight: 600; }
+
+    .network-config {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    .config-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .config-row:last-child { border-bottom: none; }
+    .config-label { color: var(--text-secondary); font-size: 0.95rem; }
+    .config-value { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.85rem; 
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .btn { 
+      display: inline-block; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: 8px; 
+      font-weight: 600; 
+      text-decoration: none; 
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .notice {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .notice p { font-size: 0.9rem; }
+
+    .security-notice {
+      background: rgba(255, 100, 100, 0.05);
+      border: 1px solid rgba(255, 100, 100, 0.2);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .security-notice h3 { color: #ff6462; margin-bottom: 0.75rem; }
+    .security-notice p { font-size: 0.9rem; }
+
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .faq-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .faq-item p { font-size: 0.95rem; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    footer {
+      text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; overflow-wrap: anywhere; word-break: break-word; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; overflow-wrap: anywhere; word-break: break-word; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { 
+        display: none; 
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10, 10, 12, 0.98);
+        flex-direction: column; padding: 1.5rem; gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      .step-card { padding: 1.25rem; }
+      .config-row { flex-direction: column; gap: 0.25rem; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/developers-connect.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/developers-connect.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="developers">
-
-    <section class="hero compact">
-      <div class="badge"><span class="badge-dot"></span> Developer Docs</div>
-      <h1>Build with MAGNE Agent Pay</h1>
-      <p class="subhead">x402-compatible payment flows for AI agents. Fork the demo, read the SKILL.md, ship your integration.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>How to Connect to MAGNE Testnets</h1>
+      <p>Guide for developers to add MAGNE L1 and M Hash L2 testnets to MetaMask or other Web3 wallets.</p>
     </section>
 
-    <section class="section">
+    <!-- Before You Start -->
+    <section>
       <div class="container">
-        <h2 class="section-label">Quick Start</h2>
-        <div class="terminal">
-          <pre><code><span class="prompt">$</span> <span class="cmd">git clone https://github.com/jerrysohigh-create/magne-agent-pay-demo</span>
-<span class="prompt">$</span> <span class="cmd">cd magne-agent-pay-demo/contracts</span>
-<span class="prompt">$</span> <span class="cmd">npm install</span>
-<span class="prompt">$</span> <span class="cmd">npx hardhat compile</span>
-
-<span class="comment">// Deploy to M Hash L2 Testnet</span>
-<span class="prompt">$</span> <span class="cmd">npx hardhat run scripts/deploy.js --network mhashL2Testnet</span></code></pre>
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <span class="step-title">Before You Start</span>
+          </div>
+          <div class="notice">
+            <p><strong>⚠️ Testnet Only</strong></p>
+            <p>The networks below are <strong>testnets only</strong>. Parameters may change. Do not use real assets or production wallets on testnet. Testnet tokens have no monetary value.</p>
+          </div>
+          <ul style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-left: 1.5rem;">
+            <li>RPC endpoints, Chain IDs, and Explorer URLs may be updated</li>
+            <li>Use a dedicated test wallet for development</li>
+            <li>Always verify network details before transacting</li>
+            <li>For support, contact <a href="https://t.me/MagneAI" style="color: var(--accent);">@MagneAI</a></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Add MAGNE L1 Testnet -->
+    <section>
       <div class="container">
-        <h2 class="section-label">HTTP 402 Response</h2>
-        <div class="terminal">
-          <pre><code><span class="comment">// When payment is required, your API returns:</span>
-<span class="keyword">HTTP</span> <span class="type">402</span> <span class="variable">Payment Required</span>
-<span class="string">X-Payment-Amount</span>: <span class="type">0.01 mMHA</span>
-<span class="string">X-Payment-Recipient</span>: <span class="type">0xf39F...2266</span>
-<span class="string">X-Payment-Chain</span>: <span class="type">mhash-l2-testnet (20250827)</span>
-
-{
-  <span class="string">"error"</span>: <span class="string">"payment_required"</span>,
-  <span class="string">"amount"</span>: <span class="string">"0.01"</span>,
-  <span class="string">"token"</span>: <span class="string">"mMHA"</span>,
-  <span class="string">"paymentTxHash"</span>: <span class="string">"0x130b...701e"</span>
-}</code></pre>
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">2</span>
+            <span class="step-title">Add MAGNE L1 Testnet to MetaMask</span>
+          </div>
+          <p style="margin-bottom: 1rem;">In MetaMask, go to <strong>Settings → Networks → Add Network</strong> and enter:</p>
+          
+          <div class="network-config">
+            <div class="config-row">
+              <span class="config-label">Network Name</span>
+              <span class="config-value">MAGNE L1 Testnet</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">RPC URL</span>
+              <span class="config-value">https://rpc.testnet.magicalhash.com</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Chain ID</span>
+              <span class="config-value">20250810</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Symbol</span>
+              <span class="config-value">MHA</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Block Explorer</span>
+              <span class="config-value">https://explorer.testnet.magicalhash.com</span>
+            </div>
+          </div>
+          <a href="https://explorer.testnet.magicalhash.com" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">View L1 Explorer</a>
         </div>
       </div>
     </section>
 
+    <!-- Add M Hash L2 Testnet -->
+    <section>
+      <div class="container">
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">3</span>
+            <span class="step-title">Add M Hash L2 Testnet to MetaMask</span>
+          </div>
+          <p style="margin-bottom: 1rem;">In MetaMask, go to <strong>Settings → Networks → Add Network</strong> and enter:</p>
+          
+          <div class="network-config">
+            <div class="config-row">
+              <span class="config-label">Network Name</span>
+              <span class="config-value">M Hash L2 Testnet</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">RPC URL</span>
+              <span class="config-value">https://l2-rpc.testnet.magicalhash.com</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Chain ID</span>
+              <span class="config-value">20250827</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Symbol</span>
+              <span class="config-value">MHA</span>
+            </div>
+            <div class="config-row">
+              <span class="config-label">Block Explorer</span>
+              <span class="config-value">https://l2-explorer.testnet.magicalhash.com</span>
+            </div>
+          </div>
+          <a href="https://l2-explorer.testnet.magicalhash.com" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">View L2 Explorer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Testnet MHA -->
+    <section>
+      <div class="container">
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">4</span>
+            <span class="step-title">Get Testnet MHA</span>
+          </div>
+          <p style="margin-bottom: 1rem;">Once connected, you can get testnet MHA tokens for development and testing.</p>
+          
+          <div class="notice">
+            <p><strong>Faucet Coming Soon</strong></p>
+            <p>The testnet faucet is currently in development. For testnet MHA inquiries, please contact <a href="https://t.me/MagneAI" style="color: var(--accent);">@MagneAI</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verify Connection -->
+    <section>
+      <div class="container">
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-number">5</span>
+            <span class="step-title">Verify Connection</span>
+          </div>
+          <ul style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-left: 1.5rem;">
+            <li><strong>Check network:</strong> Verify your wallet shows the correct network name and Chain ID</li>
+            <li><strong>View address:</strong> Go to the block explorer and search your wallet address</li>
+            <li><strong>Send test transaction:</strong> Try sending a small amount to yourself or another test address</li>
+            <li><strong>Confirm receipt:</strong> Verify the transaction appears in the explorer</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Issues -->
+    <section>
+      <div class="container">
+        <h2>Common Issues</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>RPC not responding</h4>
+            <p>Check your internet connection. If the RPC endpoint is under maintenance, wait and retry. You can also check network status on our official channels.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Chain ID mismatch error</h4>
+            <p>Ensure you entered the correct Chain ID: 20250810 (L1) or 20250827 (L2). Some wallets require the numeric Chain ID to be entered without leading zeros.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Faucet not working</h4>
+            <p>The faucet is in development. Contact <a href="https://t.me/MagneAI" style="color: var(--accent);">@MagneAI</a> for testnet token requests.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Transaction pending</h4>
+            <p>Testnet transactions may take longer during high traffic. Check the explorer for pending status. L2 transactions typically confirm faster than L1.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Wrong network selected</h4>
+            <p>Ensure your wallet is switched to the correct network (MAGNE L1 or M Hash L2) before sending transactions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Notice -->
+    <section>
+      <div class="container">
+        <div class="security-notice">
+          <h3>⚠️ Security Notice</h3>
+          <p><strong>Testnet tokens have no monetary value.</strong> Do not import production wallets or private keys to testnet unnecessarily. Use a dedicated test wallet for development.</p>
+          <p style="margin-top: 0.75rem;">MAGNE.AI team will never ask for your private keys or seed phrases. Keep your credentials secure and never share them with anyone.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer Resources -->
+    <section>
+      <div class="container">
+        <h2>Developer Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+          <a href="developers.html" class="btn btn-secondary">Developer Docs</a>
+          <a href="network.html" class="btn btn-secondary">Network Status</a>
+          <a href="https://github.com/magicalhash" target="_blank" class="btn btn-secondary">GitHub</a>
+          <a href="https://t.me/MagneAI" target="_blank" class="btn btn-secondary">Get Support</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -93,7 +455,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

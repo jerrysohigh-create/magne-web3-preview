@@ -3,74 +3,431 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transparency | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Transparency Center</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="MAGNE.AI Transparency Center. Access legal opinions, audit reports, token disclosures, risk disclosures, and archived materials.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Transparency Center">
+  <meta property="og:description" content="MAGNE.AI Transparency Center. Access legal opinions, audit reports, token disclosures, risk disclosures, and archived materials.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/transparency.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Transparency Center">
+  <meta name="twitter:description" content="MAGNE.AI Transparency Center. Access legal opinions, audit reports, token disclosures, risk disclosures, and archived materials.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+
+    h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; }
+
+    .hero { 
+      text-align: center; 
+      padding: 8rem 2rem 5rem;
+      background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%);
+    }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 700px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 2.5rem; }
+    .section-header h2 { border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+
+    .card { 
+      background: var(--bg-card); 
+      border: 1px solid var(--border); 
+      border-radius: 12px; 
+      padding: 2rem; 
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+    .card:hover { border-color: rgba(255,215,0,0.2); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+    .card h3 { margin-bottom: 0; }
+    .card-badge { 
+      background: rgba(0,255,136,0.1); 
+      border: 1px solid rgba(0,255,136,0.3); 
+      color: #00ff88; 
+      padding: 0.3rem 0.8rem; 
+      border-radius: 20px; 
+      font-size: 0.8rem; 
+    }
+    .card-badge.pending { 
+      background: rgba(255,215,0,0.1); 
+      border-color: rgba(255,215,0,0.3); 
+      color: var(--accent); 
+    }
+    .card-badge.planned { 
+      background: rgba(255,255,255,0.05); 
+      border-color: rgba(255,255,255,0.1); 
+      color: var(--text-secondary); 
+    }
+    .card p { font-size: 0.95rem; }
+    .btn { 
+      display: inline-block; 
+      padding: 0.7rem 1.5rem; 
+      border-radius: 8px; 
+      font-weight: 600; 
+      text-decoration: none; 
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .disclaimer {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+    .disclaimer h3 { color: var(--accent); margin-bottom: 1rem; }
+    .disclaimer p { font-size: 0.95rem; }
+
+    .contact-section {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .contact-section h2 { margin-bottom: 1rem; }
+    .contact-section p { max-width: 600px; margin: 0 auto 2rem; }
+
+    .version-history {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .version-item {
+      display: flex;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .version-date { 
+      color: var(--accent); 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.9rem; 
+      min-width: 120px;
+    }
+    .version-content h4 { margin-bottom: 0.5rem; font-size: 1rem; }
+    .version-content p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    footer {
+      text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { 
+        display: none; 
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10, 10, 12, 0.98);
+        flex-direction: column; padding: 1.5rem; gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .card { padding: 1.5rem; }
+      .version-item { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/transparency.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/transparency.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="transparency">
-
-    <section class="hero compact">
-      <div class="badge"><span class="badge-dot"></span> Disclosure</div>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
       <h1>Transparency Center</h1>
-      <p class="subhead">Agent Pay Demo disclosure, status, and compliance information.</p>
+      <p>Access archived materials, legal documentation, and disclosures for due diligence purposes.</p>
     </section>
 
-    <section class="section">
+    <!-- Website Disclosure -->
+    <section>
       <div class="container">
-        <h2 class="section-label">Agent Pay Demo Disclosure</h2>
-        <div class="compliance-box">
-          <h3>V0.1 Status</h3>
-          <p>MAGNE Agent Pay V0.1 is a testnet-stage developer demo. Current transaction hashes are from local Hardhat runtime verification. M Hash L2 testnet deployment and explorer verification remain pending.</p>
-          
-          <h3>No Production Claims</h3>
-          <p>This is not a production payment system. Not financial advice. Not a guarantee of future functionality.</p>
-          
-          <h3>Test Tokens</h3>
-          <p>mMHA is a test token with no mainnet value.</p>
-          
-          <h3>x402 Alignment</h3>
-          <p>MAGNE Agent Pay is designed to align with the emerging open x402 standard managed by the x402 Foundation under the Linux Foundation. Not an official partnership.</p>
-          
-          <h3>Subject to Compliance</h3>
-          <p>All activities are subject to applicable compliance requirements.</p>
+        <div class="section-header">
+          <h2>Website Version History</h2>
+        </div>
+        <p style="margin-bottom: 2rem;">This website is a reorganization and update of previous MAGNE.AI materials. The following documents represent historical transparency information.</p>
+        
+        <div class="card">
+          <div class="card-header">
+            <h3>Current Website</h3>
+            <span class="card-badge">Latest</span>
+          </div>
+          <p>This version represents the current structure and content, reorganized for clarity and compliance with best practices for Web3 project documentation.</p>
         </div>
       </div>
     </section>
 
+    <!-- Legal Documents -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Legal Documentation</h2>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <h3>Archived Whitepaper V1.0</h3>
+            <span class="card-badge">Archived</span>
+          </div>
+          <p>The original MAGNE.AI whitepaper documenting the project vision, technical architecture, and tokenomics as originally published.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">View Document</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Legal Opinion — GS LEGAL LLC</h3>
+            <span class="card-badge">Archived</span>
+          </div>
+          <p>Independent legal opinion provided by GS LEGAL LLC, reviewing the project's documentation and structural compliance considerations at the time of issuance.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">View Document</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Smart Contract Audit Report 1</h3>
+            <span class="card-badge planned">In Review</span>
+          </div>
+          <p>Security audit of MAGNE L1 smart contracts. Report will be published upon completion of audit process.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Coming Soon</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Smart Contract Audit Report 2</h3>
+            <span class="card-badge planned">In Review</span>
+          </div>
+          <p>Security audit of M Hash L2 smart contracts. Report will be published upon completion of audit process.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Coming Soon</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Token Disclosure</h3>
+            <span class="card-badge pending">Pending Review</span>
+          </div>
+          <p>Detailed tokenomics disclosure including allocation, vesting schedules, and governance parameters. Subject to review and update.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Coming Soon</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Archived Materials Notice</h3>
+            <a href="version-history.html" class="btn btn-primary">View Version History</a>
+            <span class="card-badge">Notice</span>
+          </div>
+          <p>Archived materials are provided for historical transparency purposes only. Documents reflect the status at time of creation and may not represent current project state, token economics, or legal compliance status.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Read Notice</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risk Disclosure -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Risk Disclosure</h2>
+        </div>
+        
+        <div class="card">
+          <h3>General Risk Disclosure</h3>
+          <p>Blockchain and Web3 projects involve significant risks including but not limited to: technological risks, regulatory uncertainty, market volatility, smart contract vulnerabilities, and loss of funds. Participants should conduct their own research and consult professional advisors before making any investment decisions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Token-Related Risks</h3>
+          <p>Token information provided on this website is for technical and ecosystem communication only. $MHA token does not constitute an investment opportunity, securities offering, or financial instrument. Token utility, value, and rewards are subject to governance decisions and may be modified or discontinued. Past performance is not indicative of future results.</p>
+        </div>
+
+        <div class="card">
+          <h3>Forward-Looking Statements</h3>
+          <p>Statements regarding future plans, developments, and timelines are forward-looking and subject to change based on technical progress, regulatory environment, market conditions, and governance decisions. Mainnet launch, DePIN implementation, and ecosystem features are planned but not guaranteed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important Disclaimer -->
+    <section>
+      <div class="container">
+        <div class="disclaimer">
+          <h3>⚠️ Important Legal Disclaimer</h3>
+          <p>
+            The archived whitepaper and legal opinion are provided for <strong>historical transparency only</strong>. The legal opinion was issued based on the materials reviewed at the time of issuance and should not be interpreted as a legal endorsement of all subsequent website updates, future product features, token market activity, or third-party decisions.<br><br>
+            
+            This website may contain information that has been updated, modified, or differs from the materials originally reviewed by legal counsel. Users should not rely on archived documents as representations of current project status, token economics, or legal compliance.<br><br>
+            
+            For due diligence purposes, please contact us directly to verify current documentation and project status.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Version History -->
+    <section>
+      <div class="container">
+        <div class="version-history">
+          <h2>Version History</h2>
+          <div class="version-item">
+            <div class="version-date">2026-05-01</div>
+            <div class="version-content">
+              <h4>Website Restructure</h4>
+              <p>Complete redesign of web3.magne.ai with new 7-page structure. Added transparency center, improved compliance wording, and removed unverifiable claims.</p>
+            </div>
+          </div>
+          <div class="version-item">
+            <div class="version-date">2025-Q4</div>
+            <div class="version-content">
+              <h4>Testnet Launch</h4>
+              <p>MAGNE L1 Testnet and M Hash L2 Testnet launched. Original documentation archived.</p>
+            </div>
+          </div>
+          <div class="version-item">
+            <div class="version-date">2025-Q2</div>
+            <div class="version-content">
+              <h4>Initial Documentation</h4>
+              <p>Original whitepaper and legal opinion issued by GS LEGAL LLC.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Pay Verification -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Agent Pay: Verifiable by Design</h2>
+        </div>
+        <p style="max-width: 640px; margin: 0 auto 2rem; text-align: center;">Every MAGNE Agent Pay transaction creates an immutable on-chain receipt. Verification does not depend on trusted intermediaries — any party can independently audit the full payment history on M Hash L2.</p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Immutable Receipts</h3>
+            <p>AI Task Receipts are recorded on M Hash L2 via the AITaskReceipt smart contract. Each receipt contains: receiptId, taskId, user, provider, amount, token, paymentTxHash, and timestamp. Receipts cannot be altered or deleted after creation.</p>
+          </div>
+          <div class="card">
+            <h3>Strict Facilitator</h3>
+            <p>The facilitator does not accept any successful transaction as proof of payment. It strictly verifies amount, recipient address, token contract, and chainId against expected values before marking a payment as verified. No exceptions.</p>
+          </div>
+          <div class="card">
+            <h3>On-Chain Settlement</h3>
+            <p>All settlement happens on M Hash L2 (chainId: 20250827). Block explorer links are published for every verified transaction. This is a testnet-stage demo — mainnet deployment is subject to security audit and governance approval.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="agent-pay.html" class="btn btn-primary" style="background: #39d0d6; color: #000;">View Agent Pay Demo</a>
+          <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-secondary" target="_blank" style="margin-left: 1rem;">View GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section">
+      <div class="container">
+        <h2>Due Diligence Inquiries</h2>
+        <p>For exchange listings, legal inquiries, or institutional due diligence requests, please contact us through the official channels below.</p>
+        <a href="https://magne.ai/magne-contact.html" class="btn btn-primary">Contact for DD</a>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -80,7 +437,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

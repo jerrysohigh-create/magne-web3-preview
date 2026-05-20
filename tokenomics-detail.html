@@ -3,76 +3,468 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Token | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Tokenomics Detail</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="$MHA tokenomics detail and disclosure. Complete token allocation, vesting schedules, governance information, and risk disclosures.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Tokenomics Detail">
+  <meta property="og:description" content="$MHA tokenomics detail and disclosure. Complete token allocation, vesting schedules, governance information, and risk disclosures.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/tokenomics-detail.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Tokenomics Detail">
+  <meta name="twitter:description" content="$MHA tokenomics detail and disclosure. Complete token allocation, vesting schedules, governance information, and risk disclosures.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; }
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 4rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1rem; line-height: 1.75; overflow-wrap: anywhere; word-break: break-word; }
+    .hero { text-align: center; padding: 6rem 2rem 4rem; background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%); }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 650px; margin: 0 auto; }
+    .notice { background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.15); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+    .notice p { font-size: 0.9rem; }
+    .security-notice { background: rgba(255, 100, 100, 0.05); border: 1px solid rgba(255, 100, 100, 0.2); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+    .security-notice h3 { color: #ff6462; margin-bottom: 0.75rem; }
+    .security-notice p { font-size: 0.9rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    ul { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-left: 1.5rem; margin-top: 0.75rem; }
+    li { margin-bottom: 0.5rem; }
+    footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; overflow-wrap: anywhere; word-break: break-word; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; overflow-wrap: anywhere; word-break: break-word; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .grid-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+    .grid-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--accent); }
+    .grid-card p { font-size: 0.9rem; }
+    .doc-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    .doc-table th, .doc-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .doc-table th { color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .doc-table td { font-size: 0.95rem; }
+    .doc-table tr:hover { background: var(--bg-card); }
+    .token-badge { display: inline-block; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .highlight-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .highlight-box h4 { color: var(--accent); margin-bottom: 1rem; font-size: 1.05rem; }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10, 10, 12, 0.98); flex-direction: column; padding: 1.5rem; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      .doc-table { display: block; overflow-x: auto; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/tokenomics-detail.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/tokenomics-detail.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="token">
-
-    <section class="hero compact">
-      <div class="badge"><span class="badge-dot"></span> Token</div>
-      <h1>MHA / mMHA</h1>
-      <p class="subhead">Utility tokens for MAGNE Agent Pay settlement. mMHA is a testnet token for development.</p>
+  <main>
+    <section class="hero">
+      <h1>$MHA Tokenomics Detail & Disclosure</h1>
+      <p>Detailed token allocation, governance boundaries, and participation information for $MHA ecosystem participants.</p>
     </section>
 
-    <section class="section">
+    <section>
       <div class="container">
-        <h2 class="section-label">Token Utility</h2>
-        <div class="terminal">
-          <pre><code><span class="comment">// mMHA is used for:</span>
-<span class="prompt">$</span> <span class="cmd">Payment settlement</span>     <span class="comment">// Pay for AI agent services</span>
-<span class="prompt">$</span> <span class="cmd">Receipt generation</span>   <span class="comment">// Trigger AI Task Receipt creation</span>
-<span class="prompt">$</span> <span class="cmd">Facilitator fees</span>      <span class="comment">// Pay facilitator verification</span>
-
-<span class="comment">// Current V0.1: mMHA is a test token on local Hardhat</span>
-<span class="comment">// Future: mMHA on M Hash L2 testnet</span></code></pre>
+        <h2>Overview</h2>
+        <div class="notice">
+          <p><strong>For Technical, Ecosystem, and Disclosure Purposes Only</strong></p>
+          <p style="margin-top: 0.75rem;">$MHA is designed as the native ecosystem token for MAGNE.AI Web3 infrastructure.</p>
+          <p style="margin-top: 0.75rem;">Nothing on this page constitutes investment advice, financial advice, public offering, solicitation, or guarantee of rewards, income, profit, liquidity, listing, or token value.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section>
       <div class="container">
-        <div class="compliance-box">
-          <h3>Disclaimer</h3>
-          <p>mMHA is a test token with no mainnet value. MHA and mMHA are planned to support selected AI Agent payment and receipt flows, subject to validation and governance. Not financial advice.</p>
+        <h2>Token Role</h2>
+        <div class="grid-3">
+          <div class="grid-card">
+            <h4>Network Utility</h4>
+            <p>Gas and transaction utility within the MAGNE network ecosystem.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Governance Participation</h4>
+            <p>Staking and governance-related participation, subject to governance launch and approved rules.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Device-Based Programs</h4>
+            <p>Device-based participation programs, subject to technical availability, eligibility requirements, and applicable terms.</p>
+          </div>
+          <div class="grid-card">
+            <h4>AI Compute Utility</h4>
+            <p>AI compute and ecosystem utility, subject to future technical development.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Developer Access</h4>
+            <p>Developer and ecosystem access to network resources and tools.</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <section>
+      <div class="container">
+        <h2>Total Supply</h2>
+        <div class="highlight-box">
+          <h4>Total Token Supply</h4>
+          <p style="font-size: 1.5rem; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace;">10,000,000,000 MHA</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Token Allocation</h2>
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Percentage</th>
+              <th>Amount (MHA)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mining Nodes</td>
+              <td><span class="token-badge">30%</span></td>
+              <td>3,000,000,000</td>
+            </tr>
+            <tr>
+              <td>Staking Nodes</td>
+              <td><span class="token-badge">15%</span></td>
+              <td>1,500,000,000</td>
+            </tr>
+            <tr>
+              <td>Ecosystem / DAO</td>
+              <td><span class="token-badge">15%</span></td>
+              <td>1,500,000,000</td>
+            </tr>
+            <tr>
+              <td>Team & Advisors</td>
+              <td><span class="token-badge">10%</span></td>
+              <td>1,000,000,000</td>
+            </tr>
+            <tr>
+              <td>VC</td>
+              <td><span class="token-badge">10%</span></td>
+              <td>1,000,000,000</td>
+            </tr>
+            <tr>
+              <td>Early Supporters</td>
+              <td><span class="token-badge">8%</span></td>
+              <td>800,000,000</td>
+            </tr>
+            <tr>
+              <td>Early Liquidity Market Makers</td>
+              <td><span class="token-badge">7%</span></td>
+              <td>700,000,000</td>
+            </tr>
+            <tr>
+              <td>Subscription / Public Sale</td>
+              <td><span class="token-badge">3%</span></td>
+              <td>300,000,000</td>
+            </tr>
+            <tr>
+              <td>Equipment-Sale Agents</td>
+              <td><span class="token-badge">1%</span></td>
+              <td>100,000,000</td>
+            </tr>
+            <tr>
+              <td>Exchange Campaigns</td>
+              <td><span class="token-badge">1%</span></td>
+              <td>100,000,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Allocation Notes</h2>
+        <div class="highlight-box">
+          <h4>Mining Nodes — 30% / 3,000,000,000 MHA</h4>
+          <p>Reserved for future device-based and network contribution programs, subject to governance-approved rules.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Staking Nodes — 15% / 1,500,000,000 MHA</h4>
+          <p>Reserved for staking-related participation after applicable mechanisms are launched, subject to governance approval.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Ecosystem / DAO — 15% / 1,500,000,000 MHA</h4>
+          <p>Reserved for ecosystem grants, developer programs, governance initiatives, and community infrastructure.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Team & Advisors — 10% / 1,000,000,000 MHA</h4>
+          <p>Reserved for contributors and advisors under applicable lock-up or vesting arrangements.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>VC — 10% / 1,000,000,000 MHA</h4>
+          <p>Reserved for strategic financing participants, subject to applicable agreements.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Early Supporters — 8% / 800,000,000 MHA</h4>
+          <p>Reserved for early ecosystem contributors and community supporters, subject to eligibility rules.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Early Liquidity Market Makers — 7% / 700,000,000 MHA</h4>
+          <p>Reserved for liquidity and market operations support, subject to applicable agreements.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Subscription / Public Sale — 3% / 300,000,000 MHA</h4>
+          <p>Reserved for future public participation programs, subject to applicable legal and regulatory requirements.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Equipment-Sale Agents — 1% / 100,000,000 MHA</h4>
+          <p>Reserved for eligible equipment sales and channel contributors.</p>
+        </div>
+        <div class="highlight-box">
+          <h4>Exchange Campaigns — 1% / 100,000,000 MHA</h4>
+          <p>Reserved for future exchange or ecosystem campaign activities, subject to applicable terms and approvals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Early Supporters Vesting</h2>
+        <div class="highlight-box">
+          <h4>Vesting Schedule</h4>
+          <ul style="margin-top: 1rem;">
+            <li><strong>6-month cliff</strong> from qualification date</li>
+            <li><strong>1/6 unlock</strong> in month 7</li>
+            <li><strong>Remaining 5/6</strong> linear unlock over 24 months</li>
+          </ul>
+          <div class="notice" style="margin-top: 1rem;">
+            <p><strong>Subject to:</strong> proof-of-contribution, eligibility review, applicable terms, and compliance requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Device Incentive / Mining Nodes Pool</h2>
+        <div class="highlight-box">
+          <h4>Mining Nodes Allocation Details</h4>
+          <p>The Mining Nodes allocation includes a future device-based participation pool.</p>
+          <ul style="margin-top: 1rem;">
+            <li><strong>Gen1 sub-pool ceiling:</strong> 400,000,000 MHA</li>
+            <li><strong>Year 1 planned issuance reference:</strong> 200,000,000 MHA</li>
+            <li><strong>Monthly base reference:</strong> Yearly amount / 12</li>
+          </ul>
+        </div>
+        <div class="highlight-box">
+          <h4>First-Year Smoothing Reference</h4>
+          <table class="doc-table" style="margin-top: 1rem;">
+            <thead>
+              <tr><th>Month</th><th>Issuance Factor</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>M1</td><td>20%</td></tr>
+              <tr><td>M2</td><td>60%</td></tr>
+              <tr><td>M3–M12</td><td>100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="security-notice" style="margin-top: 1.5rem;">
+          <h3>⚠️ Important Notice</h3>
+          <p>Any actual implementation is subject to governance approval, technical readiness, eligibility rules, anti-abuse controls, and applicable terms.</p>
+          <p style="margin-top: 0.75rem;">This information does not constitute guaranteed income or rewards from device participation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Participation Quality Controls</h2>
+        <div class="highlight-box">
+          <h4>Quality & Eligibility References</h4>
+          <ul style="margin-top: 1rem;">
+            <li><strong>Uptime threshold</strong> — expected minimum online requirements</li>
+            <li><strong>Quality threshold</strong> — expected performance and contribution standards</li>
+            <li><strong>Anti-sybil / anti-abuse review</strong> — measures to prevent fake or abusive participation</li>
+            <li><strong>Device verification</strong> — technical validation of eligible devices</li>
+            <li><strong>Compliance and regional restrictions</strong> may apply</li>
+          </ul>
+          <div class="notice" style="margin-top: 1rem;">
+            <p>All thresholds, rules, and eligibility criteria are expected to be finalized and may change based on governance-approved rules and operational requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Vesting & Lock-Up Overview</h2>
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Lock-Up / Vesting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Team & Advisors</td>
+              <td>Subject to applicable lock-up / vesting arrangements</td>
+            </tr>
+            <tr>
+              <td>VC</td>
+              <td>Subject to applicable agreements</td>
+            </tr>
+            <tr>
+              <td>Early Supporters</td>
+              <td>6-month cliff + month 7 unlock (1/6) + 24-month linear release (5/6)</td>
+            </tr>
+            <tr>
+              <td>Ecosystem / DAO</td>
+              <td>Released based on governance-approved programs</td>
+            </tr>
+            <tr>
+              <td>Device-Based Participation Pool</td>
+              <td>Subject to governance-approved program rules</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="notice" style="margin-top: 1.5rem;">
+          <p>Specific lock-up periods and vesting schedules are subject to applicable agreements and governance decisions. This table provides general guidance only.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Governance & Change Control</h2>
+        <div class="highlight-box">
+          <h4>Governance Framework</h4>
+          <ul style="margin-top: 1rem;">
+            <li>Token-related parameters may be changed or refined through governance-approved rules.</li>
+            <li>Program rules, eligibility, emission references, and participation conditions may change based on technical, regulatory, market, and operational factors.</li>
+            <li>Governance mechanisms may launch in phases.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Risk Disclosure</h2>
+        <div class="security-notice">
+          <h3>⚠️ Risk Factors</h3>
+          <ul style="margin-top: 1rem;">
+            <li>Token utility and governance functions may develop over time.</li>
+            <li>Testnet activity does not guarantee mainnet participation, rewards, allocation, token value, listing, or liquidity.</li>
+            <li>Device-based participation may be limited by technical readiness, regional restrictions, compliance requirements, and anti-abuse controls.</li>
+            <li>$MHA-related information may change.</li>
+            <li>Token value may be subject to market volatility.</li>
+            <li>Regulatory changes may affect token utility and participation programs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Important Notice</h2>
+        <div class="security-notice">
+          <h3>⚠️ Legal Disclaimer</h3>
+          <p><strong>For Technical, Ecosystem, and Disclosure Purposes Only</strong></p>
+          <p style="margin-top: 0.75rem;">Nothing on this page constitutes investment advice, financial advice, public offering, solicitation, or a guarantee of rewards, income, profit, liquidity, exchange listing, or token value.</p>
+          <p style="margin-top: 0.75rem;">Any future token-related, governance-related, staking-related, exchange-related, or device-based participation program is subject to governance-approved rules, technical availability, eligibility requirements, applicable terms, regulatory considerations, and market conditions.</p>
+          <p style="margin-top: 0.75rem;">Past participation in testnet or early supporter programs does not guarantee future allocation, rewards, or benefits.</p>
+          <p style="margin-top: 0.75rem;">Please review all applicable terms and conditions before participating in any program.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Related Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+          <a href="token.html" class="btn btn-secondary">Token Overview</a>
+          <a href="transparency.html" class="btn btn-secondary">Transparency Center</a>
+          <a href="version-history.html" class="btn btn-secondary">Version History</a>
+          <a href="faq.html" class="btn btn-secondary">FAQ</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -82,7 +474,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

@@ -3,71 +3,334 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Learn</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="Learn about MAGNE.AI Web3 infrastructure, blockchain technology, and decentralized AI. Understanding DePIN, Layer 1 and Layer 2 architectures.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Learn">
+  <meta property="og:description" content="Learn about MAGNE.AI Web3 infrastructure, blockchain technology, and decentralized AI. Understanding DePIN, Layer 1 and Layer 2 architectures.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/learn.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Learn">
+  <meta name="twitter:description" content="Learn about MAGNE.AI Web3 infrastructure, blockchain technology, and decentralized AI. Understanding DePIN, Layer 1 and Layer 2 architectures.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+
+    h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+    h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+    h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; }
+
+    .hero { 
+      text-align: center; 
+      padding: 8rem 2rem 5rem;
+      background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%);
+    }
+    .hero h1 { margin-bottom: 1.5rem; }
+    .hero p { max-width: 700px; margin: 0 auto; font-size: 1.2rem; }
+
+    .section-header { margin-bottom: 2.5rem; text-align: center; }
+    .section-header h2 { margin-bottom: 0.75rem; }
+    .section-header p { max-width: 650px; margin: 0 auto; }
+
+    .grid { display: grid; gap: 1.5rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .card { 
+      background: var(--bg-card); 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      padding: 2rem; 
+      transition: all 0.3s;
+    }
+    .card:hover { border-color: rgba(255,215,0,0.2); transform: translateY(-4px); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+    .card h3 { margin-bottom: 0.75rem; }
+    .card p { font-size: 0.95rem; }
+
+    .content-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .content-block h2 { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+    .content-block h3 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .content-block p { margin-bottom: 1rem; }
+
+    .btn { 
+      display: inline-block; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: 8px; 
+      font-weight: 600; 
+      text-decoration: none; 
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { 
+        display: none; 
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10, 10, 12, 0.98);
+        flex-direction: column; padding: 1.5rem; gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .content-block { padding: 1.5rem; }
+      .card { padding: 1.5rem; }
+    }
+  
+    
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/learn.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/learn.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="learn">
-
-    <section class="hero compact">
-      <h1>Learn</h1>
-      <p class="subhead">Understanding MAGNE Agent Pay and x402-compatible payments.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>What is MAGNE.AI?</h1>
+      <p>MAGNE.AI is a Web3-native AI smartphone and blockchain infrastructure project combining secure mobile hardware, MAGNE L1, M Hash L2, and decentralized AI compute participation.</p>
     </section>
 
-    <section class="section">
+    <!-- Thesis -->
+    <section>
       <div class="container">
-        <h2 class="section-label">Resources</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>x402 Standard</h3>
-            <p>The x402 standard is an emerging open protocol for HTTP-native payments managed by the x402 Foundation.</p>
+        <div class="content-block">
+          <h2>The Web3-Native AI Smartphone Thesis</h2>
+          <p>Most smartphones today are optimized for content consumption. MAGNE.AI is optimized for digital asset ownership — with security architecture designed in from the start, not layered on top.</p>
+          <p>The convergence of secure mobile hardware, native blockchain integration, and AI compute participation creates a new category of device: the Web3-native AI smartphone.</p>
+          <h3>Key Principles</h3>
+          <p><strong>Hardware-secured ownership:</strong> Private keys protected through dedicated secure element architecture — not software-based storage.</p>
+          <p><strong>Native Web3 access:</strong> Wallet, swap, stake, bridge — integrated directly through a secure Web3 space, not separate apps.</p>
+          <p><strong>Private AI workflows:</strong> On-device AI processing keeps your intelligence on your device, not in the cloud.</p>
+          <p><strong>Device-based incentives:</strong> Participate in future governance-approved network contribution programs through the devices you already use, subject to applicable terms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>MAGNE.AI Architecture</h2>
+          <p>Four integrated layers from secure device to decentralized infrastructure</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Secure Device Layer</h3>
+            <p>MAGNE.AI Phone Gen1 provides hardware-secured Web3 access with private dual-space architecture and NFC-based encrypted asset backup.</p>
           </div>
-          <div class="feature-card">
-            <h3>AI Task Receipts</h3>
-            <p>Immutable, programmable receipts that prove payment was made and enable auditability.</p>
+
+          <div class="card">
+            <div class="card-icon">⛓️</div>
+            <h3>MAGNE L1</h3>
+            <p>EVM-compatible base network designed for native Web3 applications, asset ownership, and ecosystem coordination.</p>
           </div>
-          <div class="feature-card">
-            <h3>Facilitator Pattern</h3>
-            <p>Verification and settlement layer that bridges payment and on-chain execution.</p>
+
+          <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>M Hash L2</h3>
+            <p>OP Stack-based Layer 2 for scalable smart contracts, lower-cost transactions, and developer experimentation.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>DePIN + AI Compute</h3>
+            <p>Device-based infrastructure participation, AI compute contribution, and governance-approved incentive programs.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Why Hardware Matters -->
+    <section>
+      <div class="container">
+        <div class="content-block">
+          <h2>Why Hardware Matters</h2>
+          <p>Software wallets can be compromised through malware, phishing, or keylogging. Hardware wallets provide superior security by isolating private keys in dedicated secure hardware.</p>
+          <h3>Security Architecture</h3>
+          <p>MAGNE.AI Phone Gen1 implements a multi-layer security approach:</p>
+          <p><strong>CC EAL2+ TEE:</strong> Trusted Execution Environment provides process isolation at the operating system level.</p>
+          <p><strong>CC EAL6+ HyperSeed N60:</strong> Dedicated secure element for private key storage and transaction signing operations.</p>
+          <p><strong>CC EAL6+ HyperSeed 72B NFC Backup Card:</strong> Encrypted offline backup and physical recovery extend protection beyond the device.</p>
+          <h3>Private Dual-Space System</h3>
+          <p>The dual-space architecture separates everyday Web2 use from Web3 operations. A hidden Web3 space isolates wallet operations, signing flows, and blockchain interactions from the main mobile experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Users Can Do -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>What Users Can Do</h2>
+          <p>Participate in the MAGNE.AI ecosystem</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">🔐</div>
+            <h3>Secure Wallet</h3>
+            <p>Use the hardware-secured wallet for storing digital assets with hardware-backed key protection.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Access DApps</h3>
+            <p>Connect to decentralized applications through the integrated Web3 space. In development.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🔗</div>
+            <h3>Join Testnet</h3>
+            <p>Participate in MAGNE L1 and M Hash L2 testnets. Testnet is live and accessible.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Device Participation</h3>
+            <p>Contribute to network security through device operation in future governance-approved programs, subject to eligibility rules and applicable terms.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI Compute</h3>
+            <p>Participate in AI compute networks by contributing device resources. In planning.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🗳️</div>
+            <h3>Governance</h3>
+            <p>Vote on protocol upgrades and ecosystem fund allocations through on-chain governance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Started -->
+    <section>
+      <div class="container" style="text-align: center; padding: 5rem 2rem;">
+        <h2>Get Started</h2>
+        <p style="max-width: 600px; margin: 1rem auto 2rem;">Ready to learn more? Explore our developer documentation, network status, or token economics.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="developers.html" class="btn btn-primary">Developer Docs</a>
+          <a href="network.html" class="btn btn-secondary">Network Status</a>
+          <a href="token.html" class="btn btn-secondary">Token Economics</a>
+          <a href="ecosystem.html" class="btn btn-secondary">Ecosystem</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -77,7 +340,6 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
+

@@ -3,99 +3,432 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Network | MAGNE Agent Pay</title>
-  <meta name="description" content="MAGNE Agent Pay — x402-compatible AI Agent payment infrastructure on M Hash L2.">
+  <title>MAGNE.AI Web3 | Network</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="MAGNE.AI network infrastructure overview. Learn about MAGNE L1 and M Hash L2 testnets, node architecture, and network parameters.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAGNE.AI Web3 | Network">
+  <meta property="og:description" content="MAGNE.AI network infrastructure overview. Learn about MAGNE L1 and M Hash L2 testnets, node architecture, and network parameters.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.magne.ai/network.html">
+  <meta property="og:site_name" content="MAGNE.AI Web3">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAGNE.AI Web3 | Network">
+  <meta name="twitter:description" content="MAGNE.AI network infrastructure overview. Learn about MAGNE L1 and M Hash L2 testnets, node architecture, and network parameters.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #0f0f12;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.5);
+      --accent: #FFD700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-brand a { color: var(--text-secondary); text-decoration: none; }
+    .nav-logo-img { height: 20px; }
+    .nav-links { display: flex; gap: 0 0.75rem; list-style: none; justify-content: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; padding: 0.4rem 0.5rem; text-align: center; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; font-kerning: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-width: 4.5rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000 !important; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+
+    main { position: relative; z-index: 1; padding-top: 80px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section:nth-child(even) { background: var(--bg-secondary); }
+
+    h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
+    h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; }
+
+    .hero { 
+      text-align: center; 
+      padding: 8rem 2rem 5rem;
+      background: radial-gradient(ellipse at center top, rgba(255,215,0,0.06) 0%, transparent 60%);
+    }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero p { max-width: 650px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 2rem; }
+    .section-header h2 { border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+
+    .card { 
+      background: var(--bg-card); 
+      border: 1px solid var(--border); 
+      border-radius: 12px; 
+      padding: 2rem; 
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+    .card:hover { border-color: rgba(255,215,0,0.2); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+    .card h3 { margin-bottom: 0; }
+
+    .network-status { 
+      display: inline-block; 
+      background: rgba(0,255,136,0.1); 
+      border: 1px solid rgba(0,255,136,0.3); 
+      color: #00ff88; 
+      padding: 0.25rem 0.7rem; 
+      border-radius: 20px; 
+      font-size: 0.75rem; 
+      font-weight: 500;
+    }
+    .network-status.planned { 
+      background: rgba(255,215,0,0.1); 
+      border-color: rgba(255,215,0,0.3); 
+      color: var(--accent); 
+    }
+
+    .info-table { width: 100%; border-collapse: collapse; }
+    pre, code { white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .info-table tr { border-bottom: 1px solid var(--border); }
+    .info-table td { padding: 0.75rem 0; }
+    .info-table td:first-child { 
+      color: var(--text-secondary); 
+      width: 120px; 
+      font-size: 0.9rem;
+    }
+    .info-table td:last-child { 
+      font-family: 'JetBrains Mono', monospace; 
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    .info-table .value { color: var(--accent); }
+
+    .btn { 
+      display: inline-block; 
+      padding: 0.65rem 1.25rem; 
+      border-radius: 6px; 
+      font-weight: 600; 
+      text-decoration: none; 
+      transition: all 0.3s;
+      font-size: 0.85rem;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 5px 15px rgba(255,215,0,0.2); }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .tool-card:hover { border-color: rgba(255,215,0,0.3); }
+    .tool-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .tool-card h4 { margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .tool-card p { font-size: 0.8rem; color: var(--text-secondary); }
+
+    .disclaimer {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-top: 2rem;
+    }
+    .disclaimer p { font-size: 0.9rem; }
+
+    footer {
+      text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand-logo { margin-bottom: 1.5rem; }
+    .footer-brand-img { height: 24px; margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); transition: all 0.2s; }
+    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-icon svg { width: 18px; height: 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .trademark-notice { font-size: 0.8rem; margin-top: 1rem; }
+    .trademark-notice a { color: var(--accent); }
+    .copyright { margin-top: 1.5rem; opacity: 0.5; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { 
+        display: none; 
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10, 10, 12, 0.98);
+        flex-direction: column; padding: 1.5rem; gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .card { padding: 1.25rem; }
+    }
+  </style>
+
+  <link rel="alternate" hreflang="en" href="https://web3.magne.ai/network.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://web3.magne.ai/coming-soon.html">
+  <link rel="alternate" hreflang="x-default" href="https://web3.magne.ai/network.html">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="scanline"></div>
-
-  <nav>
+    <nav>
     <div class="container nav-container">
       <div class="nav-brand">
         <a href="index.html">⚡ MAGNE</a>
       </div>
       <ul class="nav-links">
-                <li><a href="agent-pay.html">Agent Pay</a></li>
+        <li><a href="agent-pay.html">Agent Pay</a></li>
         <li><a href="developers.html">Developers</a></li>
         <li><a href="network.html">Network</a></li>
         <li><a href="token.html">Token</a></li>
         <li><a href="transparency.html">Transparency</a></li>
-
       </ul>
     </div>
   </nav>
 
-  <main id="network">
-
-    <section class="hero compact">
-      <div class="badge"><span class="badge-dot"></span> Infrastructure</div>
-      <h1>M Hash L2</h1>
-      <p class="subhead">High-performance settlement layer for AI Agent payments and immutable receipts.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Network Status</h1>
+      <p>Current status of MAGNE L1 and M Hash L2 networks, including testnet information and developer resources.</p>
     </section>
 
-    <section class="section">
+    <!-- Live Networks -->
+    <section>
       <div class="container">
-        <h2 class="section-label">Network Info</h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <span class="info-label">Network Name</span>
-            <span class="info-value">M Hash L2 Testnet</span>
+        <div class="section-header">
+          <h2>Live Testnet Networks</h2>
+        </div>
+
+        <!-- MAGNE L1 -->
+        <div class="card">
+          <div class="card-header">
+            <h3>MAGNE L1 Testnet</h3>
+            <span class="network-status">Testnet Live</span>
           </div>
-          <div class="info-card">
-            <span class="info-label">Chain ID</span>
-            <span class="info-value">20250827</span>
+          <p>EVM-compatible base network designed for native Web3 applications, asset ownership, and ecosystem coordination.</p>
+          <table class="info-table">
+            <tr>
+              <td>Chain ID</td>
+              <td class="value">20250810</td>
+            </tr>
+            <tr>
+              <td>Symbol</td>
+              <td class="value">MHA</td>
+            </tr>
+            <tr>
+              <td>RPC</td>
+              <td class="value">https://rpc.testnet.magicalhash.com</td>
+            </tr>
+            <tr>
+              <td>Explorer</td>
+              <td class="value">https://explorer.testnet.magicalhash.com</td>
+            </tr>
+          </table>
+          <div class="btn-group">
+            <a href="https://explorer.testnet.magicalhash.com" target="_blank" class="btn btn-primary">Block Explorer</a>
+            <a href="developers.html" class="btn btn-secondary">View Configuration</a>
           </div>
-          <div class="info-card">
-            <span class="info-label">RPC</span>
-            <span class="info-value mono">l2-rpc.testnet.magicalhash.com</span>
+        </div>
+
+        <!-- M Hash L2 -->
+        <div class="card">
+          <div class="card-header">
+            <h3>M Hash L2 Testnet</h3>
+            <span class="network-status">Testnet Live</span>
           </div>
-          <div class="info-card">
-            <span class="info-label">Explorer</span>
-            <span class="info-value mono">l2-explorer.testnet.magicalhash.com</span>
+          <p>OP Stack-based Layer 2 for scalable smart contracts, lower-cost transactions, and developer experimentation.</p>
+          <table class="info-table">
+            <tr>
+              <td>Chain ID</td>
+              <td class="value">20250827</td>
+            </tr>
+            <tr>
+              <td>Symbol</td>
+              <td class="value">MHA</td>
+            </tr>
+            <tr>
+              <td>RPC</td>
+              <td class="value">https://l2-rpc.testnet.magicalhash.com</td>
+            </tr>
+            <tr>
+              <td>Explorer</td>
+              <td class="value">https://l2-explorer.testnet.magicalhash.com</td>
+            </tr>
+          </table>
+          <div class="btn-group">
+            <a href="https://l2-explorer.testnet.magicalhash.com" target="_blank" class="btn btn-primary">Block Explorer</a>
+            <a href="developers.html" class="btn btn-secondary">View Configuration</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Mainnet Status -->
+    <section>
       <div class="container">
-        <h2 class="section-label">Why M Hash L2</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Fast Settlement</h3>
-            <p>Designed for low-latency settlement. Public metrics will be published as testnet validation progresses.</p>
+        <div class="section-header">
+          <h2>Mainnet Status</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Mainnet</h3>
+            <span class="network-status planned">In Planning</span>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">💰</div>
-            <h3>Low Cost</h3>
-            <p>Designed for scalable settlement. Public fee metrics will be published as testnet validation progresses.</p>
+          <p>Mainnet is currently in planning and development. Specific timelines and launch details will be announced through official channels.</p>
+          <table class="info-table">
+            <tr>
+              <td>Status</td>
+              <td class="value">In Planning</td>
+            </tr>
+            <tr>
+              <td>RPC</td>
+              <td>To be announced</td>
+            </tr>
+            <tr>
+              <td>Chain ID</td>
+              <td>To be announced</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="disclaimer">
+          <p><strong>Disclaimer:</strong> Testnet parameters may change. Do not use testnet endpoints for production purposes. Mainnet launch is subject to technical development, security audits, regulatory considerations, and governance approval.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer Resources -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Developer Resources</h2>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h4>L1 Explorer</h4>
+            <p>MAGNE L1 block explorer</p>
+            <div class="btn-group" style="margin-top: 1rem; justify-content: center;">
+              <a href="https://explorer.testnet.magicalhash.com" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Open</a>
+            </div>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">📜</div>
-            <h3>AI Task Receipts</h3>
-            <p>Native support for immutable, programmable receipts on-chain.</p>
+
+          <div class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h4>L2 Explorer</h4>
+            <p>M Hash L2 block explorer</p>
+            <div class="btn-group" style="margin-top: 1rem; justify-content: center;">
+              <a href="https://l2-explorer.testnet.magicalhash.com" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Open</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon">💧</div>
+            <h4>Faucet</h4>
+            <p>Get testnet MHA tokens</p>
+            <div class="btn-group" style="margin-top: 1rem; justify-content: center;">
+              <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Coming Soon</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon">📂</div>
+            <h4>Documentation</h4>
+            <p>Developer guides and docs</p>
+            <div class="btn-group" style="margin-top: 1rem; justify-content: center;">
+              <a href="developers.html" class="btn btn-secondary" style="padding: 0.5rem 1rem;">View Docs</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Agent Pay on M Hash L2 -->
+    <section style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <h2>M Hash L2: Settlement Layer for Agent Pay</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Why M Hash L2?</h3>
+            <p>M Hash L2 is the settlement layer for MAGNE Agent Pay. Every payment — mMHA ERC20 transfer, facilitator verification, and AI Task Receipt creation — settles on M Hash L2.</p>
+            <div style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-secondary);">
+              <div>Block time: <span style="color: #39d0d6;">400ms</span></div>
+              <div>Tx cost: <span style="color: #39d0d6;">&lt;$0.0025</span></div>
+              <div>Chain ID: <span style="color: #39d0d6;">20250827</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>AI Task Receipt</h3>
+            <p>Every Agent Pay transaction produces an immutable on-chain receipt. The <code style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #39d0d6;">AITaskReceiptCreated</code> event records: receiptId, taskId, user, provider, amount, token, paymentTxHash, timestamp.</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem;">Programmable by any smart contract or agent — no trusted intermediary required.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="agent-pay.html" class="btn btn-primary" style="background: #39d0d6; color: #000;">View Agent Pay Demo</a>
+          <a href="https://github.com/jerrysohigh-create/magne-agent-pay-demo" class="btn btn-secondary" target="_blank" style="margin-left: 1rem;">View GitHub</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
+    <footer>
     <div class="container">
       <div class="footer-links">
-                <a href="network.html">M Hash L2</a>
+        <a href="network.html">M Hash L2</a>
         <a href="agent-pay.html">Agent Pay</a>
         <a href="developers.html">Developers</a>
         <a href="https://magne.ai">MAGNE</a>
         <a href="https://x402.org">x402 Foundation</a>
-
       </div>
       <div class="footer-copy">
         © 2024 MAGNE Ecosystem — <a href="https://magicalhash.com">MagicalHash</a>
@@ -105,7 +438,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
